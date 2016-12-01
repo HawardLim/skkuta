@@ -1,0 +1,294 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@CHARSET "UTF-8";
+@import url('https://fonts.googleapis.com/css?family=Bungee');
+@font-face {
+    font-family: 'SsangmunDongB';
+    src: url(/assets/Typo_SsangmunDongB.ttf) format('truetype');
+}
+
+h1, html, body, h2, h3, h4, h5, h6, li, p {
+	font-family: 'SsangmunDongB';
+}
+.navbar_logo {font-family: 'Bungee', cursive;}
+
+.main_list {
+    position:relative;
+    width:100%;
+    height:100vh;
+    background-color:white;
+    margin-top:-20px;
+}
+.main_list_spec {
+    width:100%;
+    height:20vh;
+    background-color:#FFFFFF;
+    float:left;
+    margin:8% 2%;
+    box-sizing:border-box;
+    border-bottom:1px solid green;
+    img {
+    display:inline-block;
+    width:30%;
+    height:auto;
+    }
+    h1 {
+    display:inline-block;
+    color:green;
+    font-size:3em;
+    font-family: 'SsangmunDongB' !important;
+    text-align:center;
+    vertical-align:center;
+    }
+}
+
+.list_right {
+    width:30%;
+    height:100px;
+    display:inline-block;
+    position:relative;
+    float:left;
+}
+
+.list_right img{
+    width:80%;
+    height:80%;
+    margin:10% 10%;
+}
+
+.list_each {
+    display:inline-block;
+    width:100%;
+    height:100px;
+    background-color:#F2F2F2;
+}
+.list_container {
+    width:100%;
+}
+.list_all {
+    width:100%;
+    display:table;
+    padding:0;
+}
+.list_all_list {
+    width:100%;
+    display:table-cell;
+    box-sizing:border-box;
+}
+.list_middle {
+    margin-left:2%;
+    width:38%;
+    height:60px;
+    display:inline-block;
+    position:relative;
+    float:left;
+    text-overflow: ellipsis;
+    padding-bottom:5px;
+}
+
+.list_middle h2 {
+    text-align:left;
+    font-size:20px;
+    overflow: hidden;
+    font-weight:600;
+    margin-bottom:3px;
+}
+
+.list_middle span {
+    color : #FA5858;
+}
+
+.list_middle_down {
+    margin-left:2%;
+    width:68%;
+    margin-top:5px;
+    height:35px;
+     display:inline-block;
+     position:relative;
+    float:left;
+}
+.list_left {
+    width:28%;
+    margin-right:2%;
+    height:60px;
+    display:inline-block;
+    position:relative;
+    float:left;
+}
+.list_left img {
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    margin:9px 3px 3px 30px;
+    
+}
+
+ul {
+    list-style:none;
+}
+
+.upper {
+ margin-top:-20px;
+ width:100%;
+ height:200px;
+}
+
+.upper img {
+    width:100%;
+    height:100%;
+}
+
+.middle_name {
+    width:100%;
+    height:70px;
+    border-bottom:1px solid gray;
+}
+.middle_name{
+    padding-left:30px;
+    h1 {
+    font-size:25px;
+    font-weight:600;
+    text-align:left;
+    }
+}
+.middle_spec {
+    width:100%;
+    height:110px;
+    border-bottom:1px solid gray;
+}
+.circle {
+    margin-top:15px;
+    width:50px;
+    height:50px;
+    border-radius:50px;
+    background-color:#5CB748;
+    padding-top:13px;
+    p{
+        font-size:20px;
+        color:white;
+        text-align:center;
+    }
+}
+
+.circle_down {
+    width:100%;
+    height:25px;
+    p {
+        font-weight:600;
+        margin-right:5px;
+        margin-top:10px;
+        text-align:center;
+        font-size:15px;
+    }
+}
+
+.menu_nav {
+    float:center;
+    margin-right:auto;
+    margin-left:auto;
+    width:100%;
+    display:inline-block;
+    position:relative;
+}
+
+.account_menu {
+    width:100%;
+    text-align:center;
+    
+}
+.account_menubar {
+    width:33%;
+}
+.middle_name_left {
+    float:left;
+    width:49%;
+    height:70px;
+    position:relative;
+}
+
+.middle_name_left {
+    float:left;
+    width:49%;
+    height:70px;
+    position:relative;
+}
+
+.btn_call { 
+    margin-top:20px;
+    margin-left:30px;
+    position:relative;
+}
+.reply_input_text {
+    width:200px;
+    float:left;
+    margin-top:10px;
+}
+.review_input_div {
+    width:100%;
+    height:100px;
+    border-bottom: 1px solid gray;
+}
+.review_view {
+    width:100%;
+}
+.review_each {
+    position:relative;
+    width:100%;
+    border-bottom:1px solid gray;
+    height:auto;
+    display: inline-block;
+}
+.review_profile {
+    margin-top:8px;
+    margin-left:8px;
+    float:left;
+    width:50px;
+    height:50px;
+    img {
+        width:50px;
+        height:50px;
+        border-radius:50px;
+    }   
+}
+.menu_pic {
+    width:100%;
+    height:auto;
+    display: inline-block;
+    img {
+        width:90%;
+        margin-left:5%;
+    }
+}
+.review_p {
+    width:80%;
+    margin-top:15px;
+    margin-left:8px;
+    float:left;
+    height:auto;
+    display: inline-block;
+ p {
+     width:80%;
+ }
+}
+.replyeach_time {
+    width:100%;
+    height:auto;
+    display: inline-block;
+    p {
+    margin-left:15px;
+    }
+}
+.review_pic {
+    margin-top:30px;
+    width:100%;
+    height:auto;
+    padding-bottom:10px;
+}
+.review_pic img {
+    width:90%;
+    margin-left:5%;
+    float:left;
+    margin-top:10px;
+    margin-bottom:10px;
+}

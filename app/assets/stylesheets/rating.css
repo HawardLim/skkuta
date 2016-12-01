@@ -1,0 +1,28 @@
+
+#rating_bar {
+    width:200px;
+    height:50px;
+    margin: 4px 175px !important;
+    display:inline-block;
+}
+#rating_bar > label {
+    float: right;
+}
+#rating_bar > input {
+    display: none;
+}
+#rating_bar > label:before {
+    content: url(ginkgo2.jpg);
+    color: #c7c5c5;
+    cursor:pointer;
+    font-size:3em;
+}
+#rating_bar > label:hover:before {
+    content: url(ginkgo.jpg);
+}
+#rating_bar > label:hover ~ label:before {
+    content: url(ginkgo.jpg);
+}
+#rating_bar > input:checked ~ label:before {
+    content: url(ginkgo.jpg);
+}

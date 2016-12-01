@@ -1,0 +1,95 @@
+<style>
+    .div_input_name {
+        height:80px;
+    }
+</style>
+<div class="container">
+    <form enctype="multipart/form-data" action="/home/write_store_complete" accept-charset="UTF-8" method="POST">
+    <div class="div_input_name"> 
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <span class="col-xs-4">
+            <p>상점이름</p>
+        </span>
+        <input type="text" name="s_name" class="col-xs-8">
+    </div> 
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>전화번호</p>
+        </span>
+        <input type="text" name="s_number" class="col-xs-8">
+    </div> 
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>배달시간</p>
+        </span>
+        <input type="text" name="s_deliverytime" class="col-xs-8">
+    </div> 
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>운영시간</p>
+        </span>
+        <input type="text" name="s_time" class="col-xs-8">
+    </div>
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>카드가능여부</p>
+        </span>
+        <input type="text" name="s_card" class="col-xs-8">
+    </div>
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>최소배달결제금액</p>
+        </span>
+        <input type="text" name="s_min" class="col-xs-8">
+    </div>
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>주소</p>
+        </span>
+        <input type="text" name="s_location" class="col-xs-8" placeholder="예) 서울특별시 종로구 혜화로 12길 17 처럼 상세한 주소 입력">
+    </div>
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>음식분류</p>
+        </span>
+        <input type="text" name="s_type" class="col-xs-8">
+    </div>
+     <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>한줄소개</p>
+        </span>
+        <input type="text" name="s_intro" class="col-xs-8">
+    </div>
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>배달가능여부</p>
+        </span>
+        <input type="text" name="s_deliver_ok" class="col-xs-8" placeholder="가능하면 1 불가능하면 0 을 입력">
+    </div>
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>카드가능여부</p>
+        </span>
+        <input type="text" name="s_card_ok" class="col-xs-8" placeholder="가능하면 1 불가능하면 0 을 입력">
+    </div>
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>분할결제가능여부</p>
+        </span>
+        <input type="text" name="s_divide_ok" class="col-xs-8" placeholder="가능하면 1 불가능하면 0 을 입력">
+    </div>
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>사진</p>
+        </span>
+        <input type="file" name="s_picture" class="col-xs-8" placeholder="가능하면 1 불가능하면 0 을 입력">
+    </div>
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>메뉴사진</p>
+        </span>
+        <input type="file" name="s_menu_picture" class="col-xs-8" placeholder="가능하면 1 불가능하면 0 을 입력">
+    </div>
+    <button type="submit" class="btn"> 등록하기</button>
+    </form>
+</div>

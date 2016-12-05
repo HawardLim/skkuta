@@ -1,0 +1,35 @@
+<style>
+    .div_input_name {
+        height:80px;
+    }
+</style>
+<div class="container">
+    <form enctype="multipart/form-data" action="/home/write_ad_complete" accept-charset="UTF-8" method="POST">
+    <div class="div_input_name"> 
+       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <span class="col-xs-4">
+            <p>제목</p>
+        </span>
+        <input type="text" name="a_title" class="col-xs-8">
+    </div> 
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>내용</p>
+        </span>
+        <textarea type="textarea" name="a_content" class="col-xs-8"></textarea>
+    </div>
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>가게이름</p>
+        </span>
+        <input type="text" name="a_store" class="col-xs-8">
+    </div> 
+    <div class="div_input_name"> 
+        <span class="col-xs-4">
+            <p>가게id</p>
+        </span>
+        <input type="text" name="a_store_id" class="col-xs-8">
+    </div> 
+    <button type="submit" class="btn"> 등록하기</button>
+    </form>
+</div>

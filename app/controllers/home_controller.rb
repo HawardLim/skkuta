@@ -2,7 +2,9 @@ class HomeController < ApplicationController
   def review
     @every_review = Review.all
   end
-  
+  def index 
+    @ads = Ad.last(5)
+  end 
   def write
     @review = Review.new(title: params[:title], content: params[:content], user: current_user)
     @review.save
@@ -31,6 +33,16 @@ class HomeController < ApplicationController
     redirect_to '/home/index'
   end
   
+  def write_ad_complete
+    @ads = Ad.new
+    @ads.ad_title = params[:a_title]
+    @ads.ad_content = params[:a_content]
+    @ads.ad_store = params[:a_store]
+    @ads.store_id = params[:a_store_id]
+    @ads.save
+     redirect_to "/home/index"
+  end 
+  
   def write_store_complete
     @stores = Store.new
     @stores.s_name = params[:s_name]
@@ -52,7 +64,19 @@ class HomeController < ApplicationController
     file1 = params[:s_menu_picture]
     uploader1 = StorepicUploader.new
     uploader1.store!(file1)
-    @stores.s_menu_pic = uploader.url
+    @stores.s_menu_pic = uploader1.url
+    file2 = params[:s_menu_picture2]
+    uploader2 = StorepicUploader.new
+    uploader2.store!(file2)
+    @stores.s_menu_pic2 = uploader2.url
+    file3 = params[:s_menu_picture3]
+    uploader3 = StorepicUploader.new
+    uploader3.store!(file3)
+    @stores.s_menu_pic3 = uploader3.url
+    file4 = params[:s_menu_picture4]
+    uploader4 = StorepicUploader.new
+    uploader4.store!(file4)
+    @stores.s_menu_pic4 = uploader4.url
     @stores.save
     redirect_to "/home/index"
   end
@@ -81,6 +105,18 @@ class HomeController < ApplicationController
     uploader1 = StorepicUploader.new
     uploader1.store!(file1)
     @stores.s_menu_pic = uploader.url
+    file2 = params[:s_menu_picture2]
+    uploader2 = StorepicUploader.new
+    uploader2.store!(file2)
+    @stores.s_menu_pic2 = uploader.url
+    file3 = params[:s_menu_picture3]
+    uploader3 = StorepicUploader.new
+    uploader3.store!(file3)
+    @stores.s_menu_pic3 = uploader.url
+    file4 = params[:s_menu_picture4]
+    uploader4 = StorepicUploader.new
+    uploader4.store!(file4)
+    @stores.s_menu_pic4 = uploader.url
     @stores.save
     redirect_to "/home/index"
   end

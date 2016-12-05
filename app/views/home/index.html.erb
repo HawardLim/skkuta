@@ -1,4 +1,12 @@
 <div class="container">
+   <div>
+       <p><span class="glyphicon glyphicon-info-sign"></span>  이벤트 공지</p>
+       <ul class="list-group">
+          <% @ads.each do |a| %>
+           <a href="/home/ad_spec/<%=a.id%>"><li class="list-group-item ad_list"><%= a.ad_title%></li></a>
+          <% end %>
+       </ul>
+   </div>
    <div class="main_list">
     <div class="col-xs-12">
         <a href="/home/list_korea">
@@ -70,6 +78,13 @@
         <a href="/home/write_store">
         <div class="main_list_spec">
             <h1 style="text-align:center;">식당추가</h1>
+        </div>
+        </a>
+        </div>
+        <div class="col-xs-12">
+        <a href="/home/write_ad">
+        <div class="main_list_spec">
+            <h1 style="text-align:center;">광고추가</h1>
         </div>
         </a>
         </div>

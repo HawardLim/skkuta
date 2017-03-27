@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(version: 20161205131121) do
     t.string   "s_menu_pic2"
     t.string   "s_menu_pic3"
     t.string   "s_menu_pic4"
+    t.string   "s_menu_pic5"
+    t.string   "s_menu_pic6"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end

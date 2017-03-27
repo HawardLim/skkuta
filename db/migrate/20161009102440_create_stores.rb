@@ -15,9 +15,11 @@ class CreateStores < ActiveRecord::Migration
       t.string   :s_number
       t.string   :s_type
       t.string   :s_menu_pic
-       t.string   :s_menu_pic2
-        t.string   :s_menu_pic3
-         t.string   :s_menu_pic4
+      t.string   :s_menu_pic2
+      t.string   :s_menu_pic3
+      t.string   :s_menu_pic4
+      t.string   :s_menu_pic5
+      t.string   :s_menu_pic6
       t.timestamps null: false
     end
   end

@@ -125,6 +125,14 @@ class HomeController < ApplicationController
     uploader4 = StorepicUploader.new
     uploader4.store!(file4)
     @stores.s_menu_pic4 = uploader.url
+     file5 = params[:s_menu_picture5]
+    uploader5 = StorepicUploader.new
+    uploader5.store!(file5)
+    @stores.s_menu_pic5 = uploader5.url
+    file6 = params[:s_menu_picture6]
+    uploader6 = StorepicUploader.new
+    uploader6.store!(file6)
+    @stores.s_menu_pic6 = uploader6.url
     @stores.save
     redirect_to "/home/index"
   end

@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css?family=Bungee');
 @font-face {
     font-family: 'SsangmunDongB';
-    src: url(/assets/Typo_SsangmunDongB.ttf) format('truetype');
+    src: url(/assets/BMYEONSUNG_ttf.ttf) format('truetype');
 }
 
 h1, html, body, h2, h3, h4, h5, h6, li, p {
@@ -30,7 +30,7 @@ h1, html, body, h2, h3, h4, h5, h6, li, p {
     border-bottom:1px solid green;
     img {
     display:inline-block;
-    width:30%;
+    width:100px;
     height:auto;
     }
     h1 {
@@ -54,7 +54,7 @@ h1, html, body, h2, h3, h4, h5, h6, li, p {
 .list_right img{
     width:80%;
     height:80%;
-    margin:10% 10%;
+    margin:3%;
 }
 
 .list_each {
@@ -303,3 +303,27 @@ ul {
     font-family:selif;
     display:block;
 } 
+
+@media all and (max-width : 768px) {
+.container {
+    width:100%;
+}
+}
+@media all and (min-width : 769px) {
+.container {
+    width:420px;
+}
+.navbar_logo {
+    display:inline-block;
+    width:200px;
+    text-align:center;
+    margin-right:auto;
+    margin-left:auto;
+}
+.container-fluid {
+    text-align:center;
+}
+.navbar-header {
+    width:100%;
+}
+}

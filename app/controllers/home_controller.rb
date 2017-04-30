@@ -2,9 +2,8 @@ class HomeController < ApplicationController
   def review
     @every_review = Review.all
   end
-  def index 
-    @ads = Adpic.last(3)
-  end 
+  def index
+  end
   def view_count_up
     @store = Store.find(params[:id])
     @store.increment('click_count')

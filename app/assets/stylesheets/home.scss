@@ -11,7 +11,10 @@
 h1, html, body, h2, h3, h4, h5, h6, li, p {
 	font-family: 'SsangmunDongB';
 }
-.navbar_logo {font-family: 'Bungee', cursive;}
+.navbar_logo {
+    font-family: 'Bungee', cursive;
+    margin-right:50px;            
+}
 
 .main_list {
     position:relative;
@@ -52,9 +55,9 @@ h1, html, body, h2, h3, h4, h5, h6, li, p {
 }
 
 .list_right img{
-    width:80%;
-    height:80%;
-    margin:5%;
+    width:85%;
+    height:85%;
+    margin:6%;
 }
 
 .list_each {
@@ -200,6 +203,9 @@ ul {
 .account_menubar {
     width:33%;
 }
+.account_menubar_i {
+    width:50%;
+}
 .middle_name_left {
     float:left;
     width:49%;
@@ -308,6 +314,9 @@ ul {
 .container {
     width:100%;
 }
+.navbar_logo {
+    margin-right:40px;            
+}
 }
 @media all and (min-width : 769px) {
 .container {
@@ -316,9 +325,8 @@ ul {
 .navbar_logo {
     display:inline-block;
     width:200px;
+    margin-right:50px;
     text-align:center;
-    margin-right:auto;
-    margin-left:auto;
 }
 .container-fluid {
     text-align:center;
@@ -326,4 +334,220 @@ ul {
 .navbar-header {
     width:100%;
 }
+}
+/*
+ * Start Bootstrap - Half Slider (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+@media all and (min-width : 651px) {
+/* You can change the height of the carousel by changing the height in the class below. It is set to 50% by default, but can be any height! */
+.carousel-text{
+    position:absolute;
+    right:15%;
+    top:10px;
+    left:15%;
+    z-index:10;
+    padding-top:20px;
+    padding-bottom:20px;
+    color:#fff;
+    text-align:center;
+    text-shadow:0 1px 2px rgba(0,0,0,.6);
+}
+
+.carousel-text h1{
+    font-size: 20px;
+}
+
+.carousel-text p{
+    font-size: 16px;
+    color:#fff;
+    text-align:center;
+    text-shadow:0 1px 2px rgba(0,0,0,.6);
+}
+
+.item,
+.active,
+.carousel-inner {
+    height: 100%;
+}
+
+/* Background images are set within the HTML using inline CSS, not here */
+
+.fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    -webkit-filter: brightness(0.55);
+}
+
+footer {
+    margin: 50px 0 0 0;
+}
+}
+
+@media all and (max-width : 420px) {
+    .fill {
+    width: 100%;
+    height: 200px;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    -webkit-filter: brightness(0.55);
+    }
+    .item,
+    .active,
+    .carousel-inner {
+    height: 200px;
+    }
+    .carousel {
+    height: 200px;
+    }
+    .carousel-text{
+    top:10px;
+    position:absolute;
+    right:7%;
+    left:7%;
+    z-index:10;
+    padding-top:20px;
+    padding-bottom:20px;
+    color:#fff;
+    text-align:center;
+    text-shadow:0 1px 2px rgba(0,0,0,.6);
+    }
+    .carousel-text h1{
+    font-size: 20px;
+    }
+    .carousel-text p{
+    font-size: 16px;
+    color:#fff;
+    text-align:center;
+    text-shadow:0 1px 2px rgba(0,0,0,.6);
+    }
+}
+@media all and (min-width : 421px) and (max-width : 550px) {
+    .fill {
+    width: 100%;
+    height: 200px;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    -webkit-filter: brightness(0.55);
+    }
+    .item,
+    .active,
+    .carousel-inner {
+    height: 200px;
+}
+.carousel {
+    height: 200px;
+
+}
+.carousel-text{
+    top:20px;
+    position:absolute;
+    right:7%;
+    left:7%;
+    z-index:10;
+    padding-top:20px;
+    padding-bottom:20px;
+    color:#fff;
+    text-align:center;
+    text-shadow:0 1px 2px rgba(0,0,0,.6);
+}
+
+.carousel-text h1{
+    font-size: 20px;
+}
+
+.carousel-text p{
+    font-size: 16px;
+    color:#fff;
+    text-align:center;
+    text-shadow:0 1px 2px rgba(0,0,0,.6);
+}
+}
+
+@media all and (min-width : 551px) and (max-width : 768px) {
+
+    .fill {
+    width: 100%;
+    height: 200px;
+    background-position: center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    -webkit-filter: brightness(0.55);
+    }
+    .item,
+    .active,
+    .carousel-inner {
+    height: 300px;
+}
+.carousel {
+    height: 200px;
+
+}
+.carousel-text{
+    top : 20px;
+    position:absolute;
+    right:7%;
+    left:7%;
+    z-index:10;
+    padding-top:20px;
+    padding-bottom:20px;
+    color:#fff;
+    text-align:center;
+    text-shadow:0 1px 2px rgba(0,0,0,.6);
+}
+
+.carousel-text h1{
+    font-size: 20px;
+}
+
+.carousel-text p{
+    font-size: 12px;
+    color:#fff;
+    text-align:center;
+    text-shadow:0 1px 2px rgba(0,0,0,.6);
+}
+
+}
+.carousel {
+    height : 200px;
+    margin-top:-20px;
+}
+.main_list_spec_l {
+    width:29%;
+    height:120px;
+    background-color:#FFFFFF;
+    float:left;
+    margin: 2% 2%;
+    display:inline-block;
+        text-align:center;
+    box-sizing:border-box;
+       vertical-align:center;
+    border:1px solid green;
+    img {
+    display:inline-block;
+    width:100px;
+    height:auto;
+    }
+    h1 {
+    display:inline-block;
+    color:green;
+    font-size:25px;
+    margin-top:40px;
+    font-family: 'SsangmunDongB' !important;
+    text-align:center;
+    }
 }

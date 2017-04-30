@@ -3,8 +3,13 @@ class HomeController < ApplicationController
     @every_review = Review.all
   end
   def index 
-    @ads = Ad.last(5)
+    @ads = Adpic.last(3)
   end 
+  def view_count_up
+    @store = Store.find(params[:id])
+    @store.increment('click_count')
+    @store.save
+  end
   def write
     @review = Review.new(title: params[:title], content: params[:content], user: current_user)
     @review.save
@@ -51,6 +56,7 @@ class HomeController < ApplicationController
     @stores.s_time = params[:s_time]
     @stores.s_card = params[:s_card]
     @stores.s_min = params[:s_min]
+    @stores.s_site = params[:s_site]
     @stores.s_location = params[:s_location]
     @stores.s_intro = params[:s_intro]
     @stores.s_type = params[:s_type]
@@ -99,6 +105,7 @@ class HomeController < ApplicationController
     @stores.s_time = params[:s_time]
     @stores.s_card = params[:s_card]
     @stores.s_min = params[:s_min]
+    @stores.s_site = params[:s_site]
     @stores.s_location = params[:s_location]
     @stores.s_intro = params[:s_intro]
     @stores.s_type = params[:s_type]
@@ -125,7 +132,7 @@ class HomeController < ApplicationController
     uploader4 = StorepicUploader.new
     uploader4.store!(file4)
     @stores.s_menu_pic4 = uploader.url
-     file5 = params[:s_menu_picture5]
+    file5 = params[:s_menu_picture5]
     uploader5 = StorepicUploader.new
     uploader5.store!(file5)
     @stores.s_menu_pic5 = uploader5.url
@@ -138,6 +145,8 @@ class HomeController < ApplicationController
   end
   def spec
     @store_spec = Store.find(params[:id])
+    @store_spec.increment('view_count')
+    @store_spec.save
   end
   def list_china
     @stores = Store.where("s_type = '중식'")

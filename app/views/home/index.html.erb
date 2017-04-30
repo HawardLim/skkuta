@@ -1,13 +1,77 @@
 <div class="container">
-   <div>
-       <p><span class="glyphicon glyphicon-info-sign"></span>  이벤트 공지</p>
-       <ul class="list-group">
-          <% @ads.each do |a| %>
-           <a href="/home/ad_spec/<%=a.id%>"><li class="list-group-item ad_list"><%= a.ad_title%></li></a>
-          <% end %>
-       </ul>
-   </div>
-   <div class="main_list">
+     <!-- Half Page Image Background Carousel Header -->
+    <header id="myCarousel" class="carousel slide">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+    <div class="carousel-inner">
+            <div class="item active">
+                <!-- Set the first background image using inline CSS below. -->
+                <div class="fill" style="background-image:url(<%= asset_path 'lunch.jpg' %>)"></div>
+                <div class="carousel-text">
+                    <h1>뒷풀이 어디서 할래?</h1>
+                    <p>SKKUTA에서 전화해봐!</p>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the second background image using inline CSS below. -->
+                <div class="fill" style="background-image:url(<%= asset_path 'skku.jpg' %>);"></div>
+                <div class="carousel-text">
+                    <h1>또 학식이야?</h1>
+                    <p>SKKUTA에서 찾아봐~</p>
+                </div>
+            </div>
+            <div class="item">
+                <!-- Set the third background image using inline CSS below. -->
+                <div class="fill" style="background-image:url(<%= asset_path 'question.jpg' %>);"></div>
+                <div class="carousel-text">
+                    <h1>오늘 점심은 또 뭐 먹을래</h1>
+                    <p>SKKUTA에서 찾아봐~</p>
+                </div>
+            </div>
+            
+            <!--<% if @ads.nil? %>-->
+            <!--<% else %>-->
+            <!--<% @ads.each do |a| %>-->
+            <!--<div class="item" onclick="window.location='/home/spec/<%=a.store_id%>';">-->
+                <!-- Set the first background image using inline CSS below. -->
+            <!--    <div class="fill" style="background-image:url(<%= image_tag a.pic %>)"></div>-->
+            <!--    <div class="carousel-text">-->
+            <!--        <h1><%= a.title%></h1>-->
+            <!--        <p><%= a.sub_title%></p>-->
+            <!--    </div>-->
+            <!--</div>-->
+            <!--<% end %>-->
+            <!--<% end %>-->
+    </div>
+       <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+
+    </header>
+
+   <!--<div>-->
+   <!--    <p><span class="glyphicon glyphicon-info-sign"></span>  이벤트 공지</p>-->
+   <!--    <ul class="list-group">-->
+   <!--       <% @ads.each do |a| %>-->
+   <!--        <a href="/home/ad_spec/<%=a.id%>"><li class="list-group-item ad_list"><%= a.ad_title%></li></a>-->
+   <!--       <% end %>-->
+   <!--    </ul>-->
+   <!--</div>-->
+   <ul class="nav nav-tabs menu_nav" role="tablist">
+    <li role="presentation" class="active account_menubar_i" style="height:50px;"><a href="#menu" aria-controls="menu" role="tab" data-toggle="tab" class="activeTab account_menu"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> 종류별</a></li>
+    <li role="presentation" class="account_menubar_i" style="height:50px;"><a href="#location" aria-controls="location" role="tab" data-toggle="tab" class="account_menu"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span> 위치별</a></li>
+    </ul>
+ 
+ <div class="tab-content">
+    <div role="tabpanel" class="tab-pane fade in active" id="menu">
+    <section id="menu">
     <div class="col-xs-12">
         <a href="/home/list_korea">
         <div class="main_list_spec">
@@ -50,7 +114,6 @@
         </div>
         </a>
     </div>
-   </div>
     <div class="col-xs-12">
         <a href="/home/list_burger">
         <div class="main_list_spec">
@@ -71,6 +134,48 @@
             <h1 style="text-align:left;">뒷풀이</h1><img src="/assets/soju.png" style="float:right;"/>
         </div>
         </a>
+    </div>
+    </div>
+    </section>
+    <div role="tabpanel" class="tab-pane fade in" id="location">
+        <section id="location">
+        <a href="/home/list_2nd">
+        <div class="main_list_spec_l">
+            <h1 style="text-align:left;">정문</h1>
+        </div>
+        </a>
+        <a href="/home/list_2nd">
+        <div class="main_list_spec_l">
+            <h1 style="text-align:left;">철문</h1>
+        </div>
+        </a>
+        <a href="/home/list_2nd">
+        <div class="main_list_spec_l">
+            <h1 style="text-align:left;">쪽문</h1>
+        </div>
+        </a>
+        <a href="/home/list_2nd">
+        <div class="main_list_spec_l">
+            <h1 style="text-align:left;">사거리</h1>
+        </div>
+        </a>
+        <a href="/home/list_2nd">
+        <div class="main_list_spec_l">
+            <h1 style="text-align:left;">대명거리</h1>
+        </div>
+        </a>
+         <a href="/home/list_2nd">
+        <div class="main_list_spec_l">
+            <h1 style="text-align:left;">소나무길</h1>
+        </div>
+        </a>
+        <a href="/home/list_2nd">
+        <div class="main_list_spec_l">
+            <h1 style="text-align:left;">혜화로터리</h1>
+        </div>
+        </a>
+     <div class="menu_pic" style="margin-top:50px;">
+        <img src="/assets/segment.jpg"/>
     </div>
     <% if user_signed_in? %>
      <% if current_user.email == "admin@naver.com"%>
@@ -107,5 +212,11 @@
         </a>
     </div>
     <% end %>
+    </section>
     </div>
-</div>
+ </div>    
+  <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+  </script>

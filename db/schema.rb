@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205131121) do
+ActiveRecord::Schema.define(version: 20170427113240) do
+
+  create_table "adpics", force: :cascade do |t|
+    t.string   "title"
+    t.string   "sub_title"
+    t.integer  "store_id"
+    t.string   "pic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ads", force: :cascade do |t|
     t.string   "ad_title"
@@ -73,8 +82,11 @@ ActiveRecord::Schema.define(version: 20161205131121) do
     t.string   "s_menu_pic4"
     t.string   "s_menu_pic5"
     t.string   "s_menu_pic6"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "view_count",     default: 0
+    t.integer  "click_count",    default: 0
+    t.string   "s_site",         default: "false"
   end
 
   create_table "users", force: :cascade do |t|

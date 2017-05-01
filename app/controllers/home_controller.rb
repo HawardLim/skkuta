@@ -204,6 +204,9 @@ class HomeController < ApplicationController
   def list_maro
     @stores = Store.where("s_site = '마로니에'")
   end
+   def list_india
+    @stores = Store.where("s_type = '인도'")
+  end
   def review_write
     @reviews = Review.new
     @reviews.store_id = params[:store_id]

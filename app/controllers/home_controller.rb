@@ -181,28 +181,28 @@ class HomeController < ApplicationController
     @stores = Store.where("s_type = '치킨'")
   end
   def list_jung
-    @stores = Store.where("s_type = '정문'")
+    @stores = Store.where("s_site = '정문'")
   end
   def list_chul
-    @stores = Store.where("s_type = '철문'")
+    @stores = Store.where("s_site = '철문'")
   end
   def list_zzok
-    @stores = Store.where("s_type = '쪽문'")
+    @stores = Store.where("s_site = '쪽문'")
   end
   def list_four
-    @stores = Store.where("s_type = '사거리'")
+    @stores = Store.where("s_site = '사거리'")
   end
   def list_dae
-    @stores = Store.where("s_type = '대명거리'")
+    @stores = Store.where("s_site = '대명거리'")
   end
   def list_sonamu
-    @stores = Store.where("s_type = '소나무길'")
+    @stores = Store.where("s_site = '소나무길'")
   end
   def list_rotary
-    @stores = Store.where("s_type = '로터리'")
+    @stores = Store.where("s_site = '로터리'")
   end
   def list_maro
-    @stores = Store.where("s_type = '마로니에'")
+    @stores = Store.where("s_site = '마로니에'")
   end
   def review_write
     @reviews = Review.new

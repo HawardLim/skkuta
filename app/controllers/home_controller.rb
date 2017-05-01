@@ -208,7 +208,7 @@ class HomeController < ApplicationController
     @stores = Store.where("s_site = '마로니에'")
   end
   def list_india
-    @stores = Store.where("s_type = '인도'")
+    @stores = Store.where("s_type = '인도음식'")
   end
   def review_write
     @reviews = Review.new

@@ -169,7 +169,7 @@ class HomeController < ApplicationController
     @stores = Store.where("s_type = '멕시칸'")
   end
   def list_japan
-    @stores = Store.where("s_type = '일본식'")
+    @stores = Store.where("s_type = '일식'")
   end
   def list_burger
     @stores = Store.where("s_type = '햄버거'")

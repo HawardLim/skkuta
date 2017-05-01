@@ -551,3 +551,153 @@ footer {
     text-align:center;
     }
 }
+
+// 페이지네이션
+
+.pagination_div {
+    text-align: center;
+}
+    .current {
+        display: inline-block;
+        font-size: 16px;
+        text-decoration: none;
+        padding-top:10px;
+        font-weight: bold;
+        display:inline-block;
+        box-sizing: border-box;
+        width:40px;
+        height:40px;
+        background-color: white;
+        border-radius:3px;
+        border:0.5px solid #BDBDBD;
+        color: #2f609c;
+        font-style: normal;
+    }
+    .pagination a {
+        color:#cccccc !important;
+        font-size:16px;
+        font-style: normal;
+        border-radius:3px;
+        display:inline-block;
+        box-sizing: border-box;
+        width:40px;
+        padding-top:10px;
+        border:0.5px solid #BDBDBD;
+        background-color: white;
+        height:40px;
+    }
+
+    .pagination_links a{
+        display:none;
+    }
+    .next_page,.previous_page{
+        color:#cccccc !important;
+        font-size:16px;
+        font-style: normal;
+        border-radius:3px;
+        display:inline-block;
+        box-sizing: border-box;
+        width:40px;
+        padding-top:10px;
+        border:0.5px solid #BDBDBD;
+        background-color: white;
+        height:40px;
+    }
+    .pagination_links{
+        text-align: center;
+    }
+    .previous_page.disabled, .next_page.disabled{
+        display: none !important;
+    }
+    .pagination_links a{
+        text-decoration: none;
+    }
+    .pagination_links a:hover{
+        text-decoration: underline;
+    }
+    .pagination_links span{
+        text-decoration: none;
+        display: inline-block;
+        color: #000000;
+    }
+@media all and (max-width : 420px) {
+.current {
+        display: inline-block;
+        font-size: 12px;
+        text-decoration: none;
+        padding-top:5px;
+        font-weight: bold;
+        display:inline-block;
+        box-sizing: border-box;
+        width:25px;
+        height:25px;
+        background-color: white;
+        border-radius:3px;
+        border:0.5px solid #BDBDBD;
+        color: #2f609c;
+        font-style: normal;
+    }
+    .pagination a {
+        color:#cccccc !important;
+        font-size:12px;
+        font-style: normal;
+        border-radius:3px;
+        display:inline-block;
+        box-sizing: border-box;
+        width:25px;
+        padding-top:5px;
+        border:0.5px solid #BDBDBD;
+        background-color: white;
+        height:25px;
+    }
+     .next_page,.previous_page{
+        color:#cccccc !important;
+        font-size:12px;
+        font-style: normal;
+        border-radius:3px;
+        display:inline-block;
+        box-sizing: border-box;
+        width:25px;
+        padding-top:5px;
+        border:0.5px solid #BDBDBD;
+        background-color: white;
+        height:25px;
+    }
+    .pagination_div {
+        margin-top:-5px;
+        text-align: center;
+    }
+}
+.admin_subtitle {
+    width:100%;
+    padding:20px auto;
+}
+// 페이지네이션 끝
+  // 게시판 
+    .table {
+        width:100%;
+        text-align:center;
+    }
+    .table_head_row {
+        text-align:center;
+        background-color:#C0C0C0;
+        height:40px;
+    }
+    .table_head_num {
+        width:20%;
+         text-align:center;
+    }
+    .table_head_title {
+        width:40%;
+         text-align:center;
+    }
+    .table_head_day {
+        width:19%;
+         text-align:center;
+    }
+    .table_con_row {
+        text-align:center;
+        background-color:white;
+        height:40px;
+        border-bottom:1px solid #c0c0c0;
+    }

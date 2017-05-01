@@ -1,0 +1,26 @@
+<div class="container">
+<div class="admin_subtitle">
+<h3>식당 관리</h3><a href="/home/write_store">새로 등록</a>
+</div>
+<table class="table">
+         <thead>
+         <tr class="table_head_row">
+         <th class="table_head_num">식당 ID</th>
+         <th class="table_head_title">식당 이름</th>
+         <th class="table_head_day">수정</th>
+         <th class="table_head_day">삭제</th>
+         </tr>
+         </thead>
+         <tbody>
+              <% @news.each do |n| %>
+              <tr class="table_con_row">
+              <td class=""><%= n.id %></td>
+              <td><a href="/home/spec/<%=n.id%>"><%= n.s_name%></td>
+              <td><a href="/home/spec_edit/<%=n.id%>"> 수정</a></td>
+              <td><a href="/home/store_delete/<%=n.id%>"> 삭제</a></td>
+              </tr> 
+              <% end %>
+         </tbody>
+</table>
+     <div class="pagination_div"><%= will_paginate @news, :previous_label => t("<<"), :next_label => t(">>")%></div>
+</div>

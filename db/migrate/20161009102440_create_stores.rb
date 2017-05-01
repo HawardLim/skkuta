@@ -3,10 +3,10 @@ class CreateStores < ActiveRecord::Migration
     create_table :stores do |t|
       t.string   :s_pic
       t.string   :s_location
-      t.string  :s_deliverytime
+      t.string   :s_deliverytime
       t.string   :s_time
       t.string   :s_card
-      t.string  :s_min
+      t.string   :s_min
       t.integer  :s_deliver_ok
       t.integer  :s_card_ok
       t.integer  :s_divide_ok

@@ -1,0 +1,23 @@
+<div class="container">
+<table class="table">
+         <thead>
+         <tr class="table_head_row">
+         <th class="table_head_num">식당 ID</th>
+         <th class="table_head_title">내용</th>
+         <th class="table_head_day">등록일</th>
+         <th class="table_head_day">삭제</th>
+         </tr>
+         </thead>
+         <tbody>
+              <% @news.each do |n| %>
+              <tr class="table_con_row">
+              <td class=""><%= n.store_id %></td>
+              <td><%= n.r_text %></td>
+              <td class=""><%= n.created_at.in_time_zone("Asia/Shanghai").strftime("%Y-%m-%d") %></td>
+              <td><a href="/home/reply_delete/<%=n.id%>"> 삭제</a></td>
+              </tr> 
+              <% end %>
+         </tbody>
+</table>
+     <div class="pagination_div"><%= will_paginate @news, :previous_label => t("<<"), :next_label => t(">>")%></div>
+</div>

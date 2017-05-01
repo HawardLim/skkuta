@@ -4,6 +4,12 @@ class HomeController < ApplicationController
   end
   def index
   end
+  def admin_store
+    @news = Store.paginate(:page => params[:page], per_page: 10).order('created_at DESC')
+  end
+  def admin_reply
+    @news = Review.paginate(:page => params[:page], per_page: 10).order('created_at DESC')
+  end
   def view_count_up
     @store = Store.find(params[:id])
     @store.increment('click_count')
@@ -160,7 +166,7 @@ class HomeController < ApplicationController
     @stores = Store.where("s_type = '분식'")
   end
   def list_western
-    @stores = Store.where("s_type = '양식'")
+    @stores = Store.where("s_type = '멕시칸'")
   end
   def list_japan
     @stores = Store.where("s_type = '일본식'")
@@ -174,6 +180,30 @@ class HomeController < ApplicationController
   def list_chicken
     @stores = Store.where("s_type = '치킨'")
   end
+  def list_jung
+    @stores = Store.where("s_type = '정문'")
+  end
+  def list_chul
+    @stores = Store.where("s_type = '철문'")
+  end
+  def list_zzok
+    @stores = Store.where("s_type = '쪽문'")
+  end
+  def list_four
+    @stores = Store.where("s_type = '사거리'")
+  end
+  def list_dae
+    @stores = Store.where("s_type = '대명거리'")
+  end
+  def list_sonamu
+    @stores = Store.where("s_type = '소나무길'")
+  end
+  def list_rotary
+    @stores = Store.where("s_type = '로터리'")
+  end
+  def list_maro
+    @stores = Store.where("s_type = '마로니에'")
+  end
   def review_write
     @reviews = Review.new
     @reviews.store_id = params[:store_id]
@@ -186,5 +216,9 @@ class HomeController < ApplicationController
     @reviews.save
     redirect_to "/home/spec/#{@stores.id}"
   end
-  
+  def reply_delete
+    @stores = Review.find(params[:id])
+    @stores.destroy
+    redirect_to "/home/admin_reply"
+  end
 end

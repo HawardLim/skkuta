@@ -124,19 +124,19 @@ class HomeController < ApplicationController
     file1 = params[:s_menu_picture]
     uploader1 = StorepicUploader.new
     uploader1.store!(file1)
-    @stores.s_menu_pic = uploader.url
+    @stores.s_menu_pic = uploader1.url
     file2 = params[:s_menu_picture2]
     uploader2 = StorepicUploader.new
     uploader2.store!(file2)
-    @stores.s_menu_pic2 = uploader.url
+    @stores.s_menu_pic2 = uploader2.url
     file3 = params[:s_menu_picture3]
     uploader3 = StorepicUploader.new
     uploader3.store!(file3)
-    @stores.s_menu_pic3 = uploader.url
+    @stores.s_menu_pic3 = uploader3.url
     file4 = params[:s_menu_picture4]
     uploader4 = StorepicUploader.new
     uploader4.store!(file4)
-    @stores.s_menu_pic4 = uploader.url
+    @stores.s_menu_pic4 = uploader4.url
     file5 = params[:s_menu_picture5]
     uploader5 = StorepicUploader.new
     uploader5.store!(file5)

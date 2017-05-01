@@ -162,6 +162,9 @@ class HomeController < ApplicationController
   def list_korea
     @stores = Store.where("s_type = '한식'")
   end
+  def list_pasta
+    @stores = Store.where("s_type = '양식'")
+  end
   def list_gimbab
     @stores = Store.where("s_type = '분식'")
   end

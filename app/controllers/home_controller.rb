@@ -71,31 +71,31 @@ class HomeController < ApplicationController
     file = params[:s_picture]
     uploader = StorepicUploader.new
     uploader.store!(file)
-    @stores.s_pic = uploader.url
+    @stores.s_pic = uploader.middle.url
     file1 = params[:s_menu_picture]
     uploader1 = StorepicUploader.new
     uploader1.store!(file1)
-    @stores.s_menu_pic = uploader1.url
+    @stores.s_menu_pic = uploader1.middle.url
     file2 = params[:s_menu_picture2]
     uploader2 = StorepicUploader.new
     uploader2.store!(file2)
-    @stores.s_menu_pic2 = uploader2.url
+    @stores.s_menu_pic2 = uploader2.middle.url
     file3 = params[:s_menu_picture3]
     uploader3 = StorepicUploader.new
     uploader3.store!(file3)
-    @stores.s_menu_pic3 = uploader3.url
+    @stores.s_menu_pic3 = uploader3.middle.url
     file4 = params[:s_menu_picture4]
     uploader4 = StorepicUploader.new
     uploader4.store!(file4)
-    @stores.s_menu_pic4 = uploader4.url
+    @stores.s_menu_pic4 = uploader4.middle.url
     file5 = params[:s_menu_picture5]
     uploader5 = StorepicUploader.new
     uploader5.store!(file5)
-    @stores.s_menu_pic5 = uploader5.url
+    @stores.s_menu_pic5 = uploader5.middle.url
     file6 = params[:s_menu_picture6]
     uploader6 = StorepicUploader.new
     uploader6.store!(file6)
-    @stores.s_menu_pic6 = uploader6.url
+    @stores.s_menu_pic6 = uploader6.middle.url
     @stores.save
     redirect_to "/home/index"
   end
@@ -120,31 +120,31 @@ class HomeController < ApplicationController
     file = params[:s_picture]
     uploader = StorepicUploader.new
     uploader.store!(file)
-    @stores.s_pic = uploader.url
+    @stores.s_pic = uploader.middle.url
     file1 = params[:s_menu_picture]
     uploader1 = StorepicUploader.new
     uploader1.store!(file1)
-    @stores.s_menu_pic = uploader1.url
+    @stores.s_menu_pic = uploader1.middle.url
     file2 = params[:s_menu_picture2]
     uploader2 = StorepicUploader.new
     uploader2.store!(file2)
-    @stores.s_menu_pic2 = uploader2.url
+    @stores.s_menu_pic2 = uploader2.middle.url
     file3 = params[:s_menu_picture3]
     uploader3 = StorepicUploader.new
     uploader3.store!(file3)
-    @stores.s_menu_pic3 = uploader3.url
+    @stores.s_menu_pic3 = uploader3.middle.url
     file4 = params[:s_menu_picture4]
     uploader4 = StorepicUploader.new
     uploader4.store!(file4)
-    @stores.s_menu_pic4 = uploader4.url
+    @stores.s_menu_pic4 = uploader4.middle.url
     file5 = params[:s_menu_picture5]
     uploader5 = StorepicUploader.new
     uploader5.store!(file5)
-    @stores.s_menu_pic5 = uploader5.url
+    @stores.s_menu_pic5 = uploader5.middle.url
     file6 = params[:s_menu_picture6]
     uploader6 = StorepicUploader.new
     uploader6.store!(file6)
-    @stores.s_menu_pic6 = uploader6.url
+    @stores.s_menu_pic6 = uploader6.middle.url
     @stores.save
     redirect_to "/home/index"
   end
@@ -218,7 +218,7 @@ class HomeController < ApplicationController
     file = params[:r_picture]
     uploader = StorepicUploader.new
     uploader.store!(file)
-    @reviews.r_pic = uploader.url
+    @reviews.r_pic = uploader.middle.url
     @reviews.save
     redirect_to "/home/spec/#{@stores.id}"
   end

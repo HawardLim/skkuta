@@ -14,6 +14,7 @@ class HomeController < ApplicationController
     @store = Store.find(params[:id])
     @store.increment('click_count')
     @store.save
+    redirect_to "/home/spec/#{@store.id}"
   end
   def write
     @review = Review.new(title: params[:title], content: params[:content], user: current_user)

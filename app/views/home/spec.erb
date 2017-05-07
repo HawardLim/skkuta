@@ -22,7 +22,9 @@
     <h1><%=@store_spec.s_name%></h1>
     </div>
     <div class="middle_name_right">
-    <a href="tel:<%=@store_spec.s_number%>" onclick="location.href='/home/view_count_up/<%=@store_spec.id%>'"><button type="button"  class="btn btn-success btn_call">전화하기</button></a>
+         <form action="/home/view_count_up/<%=@store_spec.id%>" accept-charset="UTF-8" method="PUT">
+            <a href="tel:<%=@store_spec.s_number%>" onclick="/home/view_count_up/<%=@store_spec.id%>"><button type="button" class="btn btn-success btn_call">전화하기</button></a>
+         </form>
     </div>
 </div>
 <div class="middle_spec">
@@ -52,24 +54,42 @@
 <div class="tab-content">
   <div role="tabpanel" class="tab-pane fade in active" id="menu">
   <section id="menu">
+       <% if @store_spec.s_menu_pic.nil?%>
+       <% else %>
       <div class="menu_pic">
           <%= image_tag @store_spec.s_menu_pic %>
       </div>
+      <%end%>
+      <% if @store_spec.s_menu_pic2.nil?%>
+       <% else %>
       <div class="menu_pic">
           <%= image_tag @store_spec.s_menu_pic2 %>
       </div>
+      <% end %>
+      <% if @store_spec.s_menu_pic3.nil?%>
+       <% else %>
       <div class="menu_pic">
           <%= image_tag @store_spec.s_menu_pic3 %>
       </div>
+      <% end%>
+      <% if @store_spec.s_menu_pic4.nil?%>
+       <% else %>
       <div class="menu_pic">
           <%= image_tag @store_spec.s_menu_pic4 %>
       </div>
+      <% end %>
+      <% if @store_spec.s_menu_pic5.nil?%>
+       <% else %>
       <div class="menu_pic">
           <%= image_tag @store_spec.s_menu_pic5 %>
       </div>
+      <% end %>
+      <% if @store_spec.s_menu_pic6.nil?%>
+       <% else %>
       <div class="menu_pic">
           <%= image_tag @store_spec.s_menu_pic6 %>
       </div>
+      <% end %>
   </section>    
   </div>
 
@@ -80,10 +100,10 @@
       <div class="review_input_div"> 
       <form action= "/home/review_write" method= "POST"  enctype="multipart/form-data" accept-charset="UTF-8">
        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-       <input type="text" class="form-control reply_input_text col-xs-10" rows="1" name="review_content" style="width:270px; margin-left:10px;" placeholder="리뷰를 작성해주세요!"/>
+       <input type="text" class="form-control reply_input_text col-xs-10" rows="1" name="review_content" style="width:250px; margin-left:10px;" placeholder="리뷰를 작성해주세요!"/>
        <input type="hidden" value="<%=@store_spec.id%>" name="store_id">
-       <input type="file" name="r_picture" class="col-xs-8" placeholder="가능하면 1 불가능하면 0 을 입력"  accept="image/*" capture/>
-       <button type="submit" style="margin-top:9px;" class="btn btn-success">전송</button>
+       <input type="file" name="r_picture" class="col-xs-8" style="margin-top:10px;" placeholder="가능하면 1 불가능하면 0 을 입력"  accept="image/*" capture/>
+       <button type="submit" style="margin-top:10px; margin-left:3px;" class="btn btn-success">전송</button>
       </form>
       </div>
       <div class="review_view">
@@ -114,6 +134,11 @@
   <div role="tabpanel" class="tab-pane fade in" id="location">
   <section id="location">
   <div id="map" style="width:100%;height:400px;"></div>
+  <div class="map_control">
+      <p>잠깐! 지도가 제대로 보이지 않을 때는</p>
+      <p>화면을 위~아래로 두 세번 왔다갔다</p>
+      <p>드래그하며 흔들어주세요!</p>
+  </div>
   </section>    
   </div>
 <input type="hidden" id="refresh" value="no">

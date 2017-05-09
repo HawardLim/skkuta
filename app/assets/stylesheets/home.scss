@@ -26,7 +26,7 @@ h1, html, body, h2, h3, h4, h5, h6, li, p {
 .main_list_spec {
     width:29%;
     height:120px;
-    background-color:#FFFFFF;
+    background-color:#58FA82;
     float: left;
     margin: 2% 2%;
     padding:20px 17px;
@@ -34,7 +34,13 @@ h1, html, body, h2, h3, h4, h5, h6, li, p {
         text-align:center;
     box-sizing:border-box;
        vertical-align:center;
-    border:1px solid #D8D8D8;
+    border:1px solid #58FA82;
+                &:hover {
+                    h1 {
+                    color: #58FA82;
+                    }
+                    background-color:#FFFFFF;
+                }
     img {
     display:inline-block;
     width:60px;
@@ -42,11 +48,14 @@ h1, html, body, h2, h3, h4, h5, h6, li, p {
     }
     h1 {
     display:inline-block;
-    color:#58FA82;
+    color:#FFFFFF;
     font-size:23px;
     font-family: 'SsangmunDongB' !important;
     text-align:center;
     vertical-align:center;
+                 &:hover    {
+                    color: #58FA82;
+                }
     }
 }
 
@@ -543,6 +552,13 @@ footer {
     box-sizing:border-box;
        vertical-align:center;
     border:1px solid #D8D8D8;
+                 &:hover {
+                    h1 {
+                    color: #FFFFFF;
+                    }
+                    background-color:#58FA82;
+                    border: 1px solid #58FA82;
+                }
     img {
     display:inline-block;
     width:100px;

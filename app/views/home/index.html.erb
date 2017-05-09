@@ -166,27 +166,25 @@
     </div>
     <% if user_signed_in? %>
      <% if current_user.email == "admin@naver.com"%>
-        <div class="col-xs-12">
+       
         <a href="/home/write_store">
         <div class="main_list_spec">
             <h1 style="text-align:center;">식당추가</h1>
         </div>
         </a>
-        </div>
-        <div class="col-xs-12">
+        
         <a href="/home/write_ad">
         <div class="main_list_spec">
             <h1 style="text-align:center;">광고추가</h1>
         </div>
         </a>
-        </div>
-        <div class="col-xs-12">
+       
         <a href="/home/admin">
         <div class="main_list_spec">
             <h1 style="text-align:center;">관리자페이지</h1>
         </div>
         </a>
-        </div>
+        
     <% end %>
     <% end %>
     <% if user_signed_in? %>

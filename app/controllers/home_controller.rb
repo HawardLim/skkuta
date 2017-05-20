@@ -64,6 +64,7 @@ class HomeController < ApplicationController
     @stores.s_min = params[:s_min]
     @stores.s_site = params[:s_site]
     @stores.s_location = params[:s_location]
+    @stores.s_theme = params[:s_theme]
     @stores.s_intro = params[:s_intro]
     @stores.s_type = params[:s_type]
     @stores.s_card_ok = params[:s_card_ok]
@@ -112,6 +113,7 @@ class HomeController < ApplicationController
     @stores.s_card = params[:s_card]
     @stores.s_min = params[:s_min]
     @stores.s_site = params[:s_site]
+    @stores.s_theme = params[:s_theme]
     @stores.s_location = params[:s_location]
     @stores.s_intro = params[:s_intro]
     @stores.s_type = params[:s_type]
@@ -202,6 +204,9 @@ class HomeController < ApplicationController
   def list_sonamu
     @stores = Store.where("s_site = '소나무길'")
   end
+  def list_baedal
+    @stores = Store.where("s_deliver_ok == 1")
+  end
   def list_rotary
     @stores = Store.where("s_site = '로터리'")
   end
@@ -210,6 +215,27 @@ class HomeController < ApplicationController
   end
   def list_india
     @stores = Store.where("s_type = '인도음식'")
+  end
+  def list_solo
+    @stores = Store.where("s_type = '혼밥'")
+  end
+  def list_date
+    @stores = Store.where("s_type = '데이트'")
+  end
+  def list_emotion
+    @stores = Store.where("s_type = '분위기'")
+  end
+  def list_homebab
+    @stores = Store.where("s_type = '집밥'")
+  end
+  def list_efficient
+    @stores = Store.where("s_type = '가성비'")
+  end
+  def list_party
+    @stores = Store.where("s_type = '파티'")
+  end
+  def list_world
+    @stores = Store.where("s_type = '세계'")
   end
   def review_write
     @reviews = Review.new

@@ -1,0 +1,42 @@
+<div class="container">
+<div class="list_container">
+  <ul class="list_all">
+    <% @stores.each do |s| %>
+    <li>
+    <div class="col-xs-12 list_all_list">
+        <div class="list_each">
+            <div class="list_right">
+              <%= image_tag s.s_pic %>
+            </div>
+            <div class="list_middle"  onclick="window.location='/home/spec/<%=s.id%>';">
+                <h2><%= s.s_name%></h2>
+            </div>
+            <div class="list_left">
+                <a href="tel:<%= s.s_number%>"><img src="/assets/다운로드.png"/></a>
+            </div>
+            <div class="list_middle_down">
+                <% if s.s_deliver_ok == 1 %>
+                <span class="label label-success">배달가능</span>
+                <% else %>
+                <span class="label label-primary">매장식사</span>
+                <% end %>
+                <% if s.s_card_ok == 1 %>
+                <span class="label label-success">카드가능</span>
+                <% else %>
+                <span class="label label-primary">현금</span>
+                <% end %>
+                
+                <% if s.s_divide_ok == 1 %>
+                <span class="label label-success">분할결제가능</span>
+                <% else %>
+                <span class="label label-primary">카드는하나로</span>
+                <% end %>
+                <span class="label label-info"><%= s.s_site %></span>
+            </div>
+        </div>
+    </div>
+    </li>
+    <% end %>
+  </ul>
+</div>
+</div>

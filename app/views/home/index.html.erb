@@ -42,9 +42,9 @@
 
     </header>
    <ul class="nav nav-tabs menu_nav" role="tablist">
-    <li role="presentation" class="active account_menubar_i" style="height:50px;"><a href="#menu" aria-controls="menu" role="tab" data-toggle="tab" class="activeTab account_menu"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> 종류별</a></li>
-    <li role="presentation" class="account_menubar_i" style="height:50px;"><a href="#theme" aria-controls="theme" role="tab" data-toggle="tab" class="account_menu"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 테마별</a></li>
-    <li role="presentation" class="account_menubar_i" style="height:50px;"><a href="#location" aria-controls="location" role="tab" data-toggle="tab" class="account_menu"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> 위치별</a></li>
+    <li role="presentation" class="active account_menubar_i" style="height:50px;"><a href="#menu" aria-controls="menu" role="tab" data-toggle="tab" class="activeTab account_menu" style="font-family:'Noto Sans KR';height:50px;"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> 종류별</a></li>
+    <li role="presentation" class="account_menubar_i" style="height:50px;"><a href="#theme" aria-controls="theme" role="tab" data-toggle="tab" class="account_menu" style="font-family:'Noto Sans KR';height:50px;"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 테마별</a></li>
+    <li role="presentation" class="account_menubar_i" style="height:50px;"><a href="#location" aria-controls="location" role="tab" data-toggle="tab" class="account_menu" style="font-family:'Noto Sans KR';height:50px;"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> 위치별</a></li>
    </ul>
  
  <div class="tab-content">
@@ -211,9 +211,15 @@
             <h1 style="text-align:left;">마로니에</h1>
         </div>
         </a>
-     <div class="menu_pic" style="margin-top:50px;">
+     <div style="width:100%; height:60px; margin-top:20px; border-top:1px solid #f2f2f2; float:left; display:inline-block; padding-left:15px;font-family:'Noto Sans KR', sans-serif; position:relative;">
+         <h4 style="font-family:'Noto Sans KR';font-weight:800; display:inline-block; float:left;"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> 위치 구분 안내 지도</h4>
+         <button style="float:left; position:relative; display:inline-block; "type="button" class="btn_write_one_story"  aria-expanded="false" data-toggle="collapse" data-target="#collapse_career" aria-controls="story open">보기</button>
+     </div> 
+     <div id="collapse_career" class="collapse" aria-expanded="false">
+     <div class="menu_pic" style="margin-top:25px;">
         <img src="/assets/segment.jpg"/>
-    </div>
+     </div>
+     </div>
     <% if user_signed_in? %>
      <% if current_user.email == "admin@naver.com"%>
        

@@ -26,7 +26,7 @@ h1, html, body, h2, h3, h4, h5, h6, li, p {
 .main_list_spec {
     width:29%;
     height:120px;
-    background-color:#58FA82;
+    background-color:#faaf3a;
     float: left;
     margin: 2% 2%;
     padding:20px 17px;
@@ -34,10 +34,10 @@ h1, html, body, h2, h3, h4, h5, h6, li, p {
         text-align:center;
     box-sizing:border-box;
        vertical-align:center;
-    border:1px solid #58FA82;
+    border:1px solid #faaf3a;
                 &:hover {
                     h1 {
-                    color: #58FA82;
+                    color: #faaf3a;
                     }
                     background-color:#FFFFFF;
                 }
@@ -54,7 +54,7 @@ h1, html, body, h2, h3, h4, h5, h6, li, p {
     text-align:center;
     vertical-align:center;
                  &:hover    {
-                    color: #58FA82;
+                    color: #faaf3a;
                 }
     }
 }
@@ -71,12 +71,15 @@ h1, html, body, h2, h3, h4, h5, h6, li, p {
     width:85%;
     height:85%;
     margin:6%;
+    border-radius:2px;
 }
 
 .list_each {
     display:inline-block;
     width:100%;
+    font-family:'Noto Sans KR';
     height:100px;
+    border-radius:3px;
     background-color:#F2F2F2;
 }
 .list_container {
@@ -106,6 +109,7 @@ h1, html, body, h2, h3, h4, h5, h6, li, p {
 .list_middle h2 {
     text-align:left;
     font-size:20px;
+     font-family:'Noto Sans KR';
     overflow: hidden;
     font-weight:600;
     margin-bottom:3px;
@@ -164,26 +168,35 @@ ul {
     padding-left:30px;
     h1 {
     font-size:25px;
+    font-family:'Noto Sans KR';
     font-weight:600;
     text-align:left;
     }
 }
+.middle_name_right {
+    float:right;
+    padding-right:15px;
+}
 .middle_spec {
     width:100%;
     height:110px;
+     font-family:'Noto Sans KR';
     border-bottom:1px solid #D8D8D8;
 }
 .circle {
     margin-top:15px;
     width:50px;
     height:50px;
+    margin-left:auto;
+    margin-right:auto;
     border-radius:50px;
-    background-color:#58FA82;
+    background-color:#faaf3a;
     padding-top:13px;
     p{
         font-size:20px;
         color:white;
         text-align:center;
+        font-family:'Noto Sans KR';
     }
 }
 
@@ -191,11 +204,12 @@ ul {
     width:100%;
     height:25px;
     p {
-        font-weight:600;
+        font-weight:400;
         margin-right:5px;
         margin-top:10px;
+        font-family:'Noto Sans KR';
         text-align:center;
-        font-size:15px;
+        font-size:12px;
     }
 }
 
@@ -328,6 +342,8 @@ ul {
 @media all and (max-width : 768px) {
 .container {
     width:100%;
+    padding-left:0px;
+    padding-right:0px;
 }
 .navbar_logo {
     margin-right:40px;            
@@ -336,6 +352,8 @@ ul {
 @media all and (min-width : 769px) {
 .container {
     width:420px;
+    padding-left:0px;
+    padding-right:0px;
 }
 .navbar_logo {
     display:inline-block;
@@ -556,8 +574,8 @@ footer {
                     h1 {
                     color: #FFFFFF;
                     }
-                    background-color:#58FA82;
-                    border: 1px solid #58FA82;
+                    background-color:#faaf3a;
+                    border: 1px solid #faaf3a;
                 }
     img {
     display:inline-block;
@@ -566,7 +584,7 @@ footer {
     }
     h1 {
     display:inline-block;
-    color:#58FA82;
+    color:#faaf3a;
     font-size:24px;
     margin-top:40px;
     font-family: 'SsangmunDongB' !important;
@@ -762,7 +780,7 @@ footer {
 .teams_tag {
     font-size:12px;
     font-weight:600;
-    color:#58FA82;
+    color:#faaf3a;
 }
 @media screen and (max-width : 768px) {
 .member_div {
@@ -778,3 +796,17 @@ footer {
     width:100%;
     height:150px;
 }
+
+.btn_write_one_story {
+    float: right;
+    width: 65px;
+    margin-top:10px;
+    height: 25px;
+    color: white;
+    margin-left: 15px;
+    font-size: 17px;
+    font-weight: 600;
+    background-color: #faaf3a;
+    border: none;
+}
+

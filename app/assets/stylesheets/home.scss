@@ -113,6 +113,12 @@ h1, html, body, h2, h3, h4, h5, h6, li, p {
     overflow: hidden;
     font-weight:600;
     margin-bottom:3px;
+    small {
+        font-size:50%;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+        overflow: hidden; 
+    }
 }
 
 .list_middle span {

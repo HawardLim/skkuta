@@ -141,6 +141,9 @@ class HomeController < ApplicationController
     @stores.s_card_ok = params[:s_card_ok]
     @stores.s_divide_ok = params[:s_divide_ok]
     @stores.s_deliver_ok = params[:s_deliver_ok]
+    @stores.s_tag = ""
+    @stores.tags.clear
+    #scan one_good column and save it to tags with cateory
     @hashtags = params[:s_tag].scan(/#\S+/)
     @hashtags.uniq.map do |hashtag|
       tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))

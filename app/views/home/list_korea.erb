@@ -15,7 +15,7 @@
             <div class="list_left">
                 <a href="tel:<%= s.s_number%>"><img src="/assets/다운로드.png"/></a>
             </div>
-            <div class="list_middle_down">
+            <div class="list_middle_down" onclick="window.location='/home/spec/<%=s.id%>';">
                 <% if s.s_deliver_ok == 1 %>
                 <span class="label label-success">배달가능</span>
                 <% else %>

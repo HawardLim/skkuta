@@ -120,7 +120,7 @@ class HomeController < ApplicationController
     uploader6.store!(file6)
     @stores.s_menu_pic6 = uploader6.middle.url
     @stores.save
-    redirect_to "/home/index"
+    redirect_to "/home/spec/#{@stores.id}"
   end
   def spec_edit
     @store = Store.find(params[:id])
@@ -202,7 +202,7 @@ class HomeController < ApplicationController
     @stores.s_menu_pic6 = uploader6.middle.url
     end
     @stores.save
-    redirect_to "/home/index"
+    redirect_to "/home/spec/#{@stores.id}"
   end
   def spec
     @store_spec = Store.find(params[:id])

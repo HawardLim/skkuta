@@ -43,7 +43,17 @@ class HomeController < ApplicationController
     @one_review.save
     redirect_to '/home/index'
   end
-  
+  def search_all
+      #tag search or navbar search
+      if params[:tag].nil?
+        @tag_search = Tag.find(params[:id])
+        @tag = @tag_search.name
+      else
+        @tag = params[:tag]
+      end
+      @stores=Store.where("(s_tag LIKE ?)","%#{@tag}%").paginate(:page => params[:page], per_page: 8)
+      @search_stores = @stores.order('created_at DESC')
+  end
   def write_ad_complete
     @ads = Ad.new
     @ads.ad_title = params[:a_title]
@@ -70,6 +80,17 @@ class HomeController < ApplicationController
     @stores.s_card_ok = params[:s_card_ok]
     @stores.s_divide_ok = params[:s_divide_ok]
     @stores.s_deliver_ok = params[:s_deliver_ok]
+    @stores.s_tag = ""
+    @stores.tags.clear
+    #scan one_good column and save it to tags with cateory
+    @hashtags = params[:s_tag].scan(/#\S+/)
+    @hashtags.uniq.map do |hashtag|
+      tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
+      @stores.tags << tag
+      @stores.s_tag << "#" + tag.name + " "
+      tag.count +=1
+      tag.save
+    end
     file = params[:s_picture]
     uploader = StorepicUploader.new
     uploader.store!(file)
@@ -120,40 +141,70 @@ class HomeController < ApplicationController
     @stores.s_card_ok = params[:s_card_ok]
     @stores.s_divide_ok = params[:s_divide_ok]
     @stores.s_deliver_ok = params[:s_deliver_ok]
-    # file = params[:s_picture]
-    # uploader = StorepicUploader.new
-    # uploader.store!(file)
-    # @stores.s_pic = uploader.middle.url
-    # file1 = params[:s_menu_picture]
-    # uploader1 = StorepicUploader.new
-    # uploader1.store!(file1)
-    # @stores.s_menu_pic = uploader1.middle.url
-    # file2 = params[:s_menu_picture2]
-    # uploader2 = StorepicUploader.new
-    # uploader2.store!(file2)
-    # @stores.s_menu_pic2 = uploader2.middle.url
-    # file3 = params[:s_menu_picture3]
-    # uploader3 = StorepicUploader.new
-    # uploader3.store!(file3)
-    # @stores.s_menu_pic3 = uploader3.middle.url
-    # file4 = params[:s_menu_picture4]
-    # uploader4 = StorepicUploader.new
-    # uploader4.store!(file4)
-    # @stores.s_menu_pic4 = uploader4.middle.url
-    # file5 = params[:s_menu_picture5]
-    # uploader5 = StorepicUploader.new
-    # uploader5.store!(file5)
-    # @stores.s_menu_pic5 = uploader5.middle.url
-    # file6 = params[:s_menu_picture6]
-    # uploader6 = StorepicUploader.new
-    # uploader6.store!(file6)
-    # @stores.s_menu_pic6 = uploader6.middle.url
+    @hashtags = params[:s_tag].scan(/#\S+/)
+    @hashtags.uniq.map do |hashtag|
+      tag = Tag.find_or_create_by(name: hashtag.downcase.delete('#'))
+      @stores.tags << tag
+      @stores.s_tag << "#" + tag.name + " "
+      tag.count +=1
+      tag.save
+    end
+    if params[:s_picture].nil?
+    else
+    file = params[:s_picture]
+    uploader = StorepicUploader.new
+    uploader.store!(file)
+    @stores.s_pic = uploader.middle.url
+    end
+    if params[:s_menu_picture].nil?
+    else
+    file1 = params[:s_menu_picture]
+    uploader1 = StorepicUploader.new
+    uploader1.store!(file1)
+    @stores.s_menu_pic = uploader1.middle.url
+    end
+    if params[:s_menu_picture2].nil?
+    else
+    file2 = params[:s_menu_picture2]
+    uploader2 = StorepicUploader.new
+    uploader2.store!(file2)
+    @stores.s_menu_pic2 = uploader2.middle.url
+    end
+    if params[:s_menu_picture3].nil?
+    else
+    file3 = params[:s_menu_picture3]
+    uploader3 = StorepicUploader.new
+    uploader3.store!(file3)
+    @stores.s_menu_pic3 = uploader3.middle.url
+    end
+    if params[:s_menu_picture4].nil?
+    else
+    file4 = params[:s_menu_picture4]
+    uploader4 = StorepicUploader.new
+    uploader4.store!(file4)
+    @stores.s_menu_pic4 = uploader4.middle.url
+    end
+    if params[:s_menu_picture5].nil?
+    else
+    file5 = params[:s_menu_picture5]
+    uploader5 = StorepicUploader.new
+    uploader5.store!(file5)
+    @stores.s_menu_pic5 = uploader5.middle.url
+    end
+    if params[:s_menu_picture6].nil?
+    else
+    file6 = params[:s_menu_picture6]
+    uploader6 = StorepicUploader.new
+    uploader6.store!(file6)
+    @stores.s_menu_pic6 = uploader6.middle.url
+    end
     @stores.save
     redirect_to "/home/index"
   end
   def spec
     @store_spec = Store.find(params[:id])
     @store_spec.increment('view_count')
+    @store_tag = @store_spec.tags
     @store_spec.save
   end
   def list_china

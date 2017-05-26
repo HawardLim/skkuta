@@ -26,6 +26,11 @@
             <a href="tel:<%=@store_spec.s_number%>" onclick="/home/view_count_up/<%=@store_spec.id%>"><button type="button" class="btn btn-success btn_call">전화하기</button></a>
          </form>
     </div>
+     <div class="store_tag">
+                            <% @store_tag.each do |tag|%>
+                                <span class="tag_style"  style="cursor:pointer;" onclick="location.href='/home/search_all/<%=tag.id%>'">#<%=tag.name%></span>
+                            <% end %>
+     </div>
 </div>
 <div class="middle_spec">
     <div class="col-xs-3">

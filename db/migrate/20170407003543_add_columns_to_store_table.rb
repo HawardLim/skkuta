@@ -3,7 +3,8 @@ class AddColumnsToStoreTable < ActiveRecord::Migration
     add_column :stores, :view_count, :integer, :default => 0
     add_column :stores, :click_count, :integer, :default => 0
     add_column :stores, :s_site, :string, :default => :false
-    add_column :stores, :s_theme, :string
+    add_column :stores, :s_theme, :string, :default => :false
+  end
 
   def self.down
     remove_column :stores, :view_count

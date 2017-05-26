@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170520094030) do
+ActiveRecord::Schema.define(version: 20170526151540) do
 
   create_table "adpics", force: :cascade do |t|
     t.string   "title"
@@ -87,8 +87,26 @@ ActiveRecord::Schema.define(version: 20170520094030) do
     t.integer  "view_count",     default: 0
     t.integer  "click_count",    default: 0
     t.string   "s_site",         default: "false"
-    t.string   "s_theme"
+    t.string   "s_theme",        default: "false"
     t.string   "theme"
+    t.text     "s_tag"
+  end
+
+  create_table "stores_tags", id: false, force: :cascade do |t|
+    t.integer  "store_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "stores_tags", ["store_id"], name: "index_stores_tags_on_store_id"
+  add_index "stores_tags", ["tag_id"], name: "index_stores_tags_on_tag_id"
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "count",      default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|

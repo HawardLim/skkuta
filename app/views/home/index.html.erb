@@ -41,6 +41,15 @@
         </a>
 
     </header>
+   <div class="searchbox">
+        <form action="/home/search_all" method="POST" style="display: inline;">
+              <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <div class="form-group" style="margin-left:15px;">
+        <input name="tag" type="text" class="form-control search_input" placeholder="ex) 한식, 분위기, 쪽문" >
+        <button type="submit" class="btn btn-default btn_search" style="border-radius:0px;display: inline-block; padding:3px 6px 3px 5px"><span class="glyphicon glyphicon-search glyphicon_search_size" aria-hidden="true"></span></button>
+        </div>
+        </form>
+    </div>
    <ul class="nav nav-tabs menu_nav" role="tablist">
     <li role="presentation" class="active account_menubar_i" style="height:50px;"><a href="#menu" aria-controls="menu" role="tab" data-toggle="tab" class="activeTab account_menu" style="font-family:'Noto Sans KR';height:50px;"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> 종류별</a></li>
     <li role="presentation" class="account_menubar_i" style="height:50px;"><a href="#theme" aria-controls="theme" role="tab" data-toggle="tab" class="account_menu" style="font-family:'Noto Sans KR';height:50px;"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 테마별</a></li>

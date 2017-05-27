@@ -204,7 +204,7 @@ ul {
 
 .middle_name {
     width:100%;
-    height:190px;
+    height:225px;
     border-bottom:1px solid #D8D8D8;
 }
 .middle_name{
@@ -899,19 +899,20 @@ footer {
     resize: none;
 }
 .tag_style {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 13px;
     word-break:keep-all;
     word-wrap: break-word;
     margin:3px;
     color: #faaf3a;
+    font-family:'Noto Sans KR';
     border: 1px solid #faaf3a;
     border-radius: 20px;
     padding: 4px 8px 4px 8px;
 }
 .store_tag {
     width:100%;
-    height:70px;
+    height:90px;
     white-space:normal;
     word-break:keep-all;
     word-wrap: break-word;

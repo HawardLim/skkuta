@@ -12,8 +12,8 @@
                 <!-- Set the first background image using inline CSS below. -->
                 <div class="fill" style="background-image:url(<%= asset_path 'lunch.jpg' %>)"></div>
                 <div class="carousel-text">
-                    <h1>뭐 먹을지 고민하지 말고~!</h1>
-                    <p>SKKUTA에서 찾아봐~</p>
+                    <h1>태그를 이용한 검색 기능이 추가되었어요!</h1>
+                    <p>밥먹을 땐 SKKUTA</p>
                 </div>
             </div>
             <div class="item">
@@ -46,7 +46,7 @@
               <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div class="form-group" style="margin-left:15px;">
         <input style="display:none" type="text" name="fakeusernameremembered"/>
-        <input name="tag" type="text" class="form-control search_input" placeholder="키워드로 검색을 할 수 있어요! ex)분위기, 한식, 데이트, 쪽문, 짜장면" >
+        <input name="tag" type="text" class="form-control search_input" placeholder="키워드로 검색을 할 수 있어요! ex) 분위기, 한식, 데이트, 쪽문, 짜장면" >
         <button type="submit" class="btn btn-default btn_search" style="border-radius:0px;display: inline-block; padding:3px 6px 3px 5px"><span class="glyphicon glyphicon-search glyphicon_search_size" aria-hidden="true"></span></button>
         </div>
         </form>

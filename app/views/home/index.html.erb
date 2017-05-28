@@ -41,15 +41,28 @@
         </a>
 
     </header>
+    
    <div class="searchbox">
         <form action="/home/search_all" method="GET" style="display: inline;">
               <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div class="form-group" style="margin-left:15px;">
         <input style="display:none" type="text" name="fakeusernameremembered"/>
-        <input name="tag" type="text" class="form-control search_input" placeholder="키워드로 검색을 할 수 있어요! ex) 분위기, 한식, 데이트, 쪽문, 짜장면" >
+        <input name="tag" type="text" class="form-control search_input" placeholder="키워드로 검색을 할 수 있어요! ex) 정문. 분위기, 데이트, 쪽문, 짜장면" >
         <button type="submit" class="btn btn-default btn_search" style="border-radius:0px;display: inline-block; padding:3px 6px 3px 5px"><span class="glyphicon glyphicon-search glyphicon_search_size" aria-hidden="true"></span></button>
         </div>
         </form>
+    </div>
+    <div class="now_skkuta">
+        <h2><%=@time.in_time_zone("Asia/Seoul").strftime("%Y-%m-%d %H:%M")%> 현재, <span class="now_number"><%=@count%></span> 개의 식당이 등록되어있습니다.</h2>
+    </div>
+    <div class="now_review">
+        <h3>최근 리뷰</h3>
+        <% @review.each do |r| %>
+        <div class="each_now_review" onclick="window.location='/home/spec/<%=r.store_id%>';">
+            <p class="each_r_text"><%=r.r_text%></p>
+            <p class="each_r_store"><%=r.store.s_name%></p>
+        </div>
+        <% end %>
     </div>
    <ul class="nav nav-tabs menu_nav" role="tablist">
     <li role="presentation" class="active account_menubar_i" style="height:50px;"><a href="#menu" aria-controls="menu" role="tab" data-toggle="tab" class="activeTab account_menu" style="font-family:'Noto Sans KR';height:50px;"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> 종류별</a></li>

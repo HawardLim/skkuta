@@ -347,6 +347,7 @@ ul {
     box-sizing:border-box;
     display: inline-block;
  p {
+     font-family:'Noto Sans KR';
      width:80%;
  }
 }
@@ -356,6 +357,8 @@ ul {
     display: inline-block;
     p {
     margin-left:15px;
+    text-align:right;
+    font-family:'Noto Sans KR';
     }
 }
 .review_pic {
@@ -883,6 +886,7 @@ footer {
        font-size:20px;
     }
     .search_input {
+        font-family:'Noto Sans KR';
         width:90%;
         margin-top:5px;
         float:left;
@@ -926,4 +930,79 @@ footer {
     display:inline-block;
     padding:10px;
     white-space:normal;
+}
+.now_skkuta {
+    width:100%;
+    height:40px;
+    padding-top:10px;
+    background-color:#f2f2f2;
+    h2 {
+    font-family:'Noto Sans KR';
+    margin-top:0px;
+    margin-bottom:0px;
+    font-size:13px;
+    font-weight:600;
+    text-align:center;
+    .now_number {
+    color:#faaf3a;
+    }
+    }
+}
+.now_review {
+    margin-top:10px;
+    width:100%;
+    height:180px;
+    h3 {
+    padding-left:10px;
+    width:100%;
+    padding-bottom:5px;
+    height:13px;
+    font-weight:600;
+    font-size:14px;
+    box-sizing:border-box;
+    display:inline-block;
+    font-family:'Noto Sans KR';
+    margin:0;
+    }
+    .each_now_review {
+    width:100%;
+    height:20;
+    box-sizing:border-box;
+    display:inline-block;
+    border-top:1px solid #f2f2f2;
+    padding:3px;
+    .each_r_text {
+    text-align:left;
+    padding-left:5px;
+    padding-top:3px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; 
+    width:80%;
+    float:left;
+    font-family:'Noto Sans KR';
+    }
+    .each_r_store {
+    text-align:right;
+    padding-right:5px;
+    width:15%;
+    float:right;
+    font-family:'Noto Sans KR';
+    }
+    }
+}
+
+
+.foot {
+    margin-top:50px;
+    border-top:1px solid #c0c0c0;
+    width:100%;
+    padding-top:50px;
+    padding-bottom:50px;
+    height:150px;
+}
+.foot_copy {
+    margin-top:15px;
+    width:100%;
+    text-align:center;
 }

@@ -3,6 +3,9 @@ class HomeController < ApplicationController
     @every_review = Review.all
   end
   def index
+    @review = Review.order('created_at DESC').take(3)
+    @time = Time.new
+    @count = Store.count
   end
   def admin_store
     @news = Store.paginate(:page => params[:page], per_page: 10).order('created_at DESC')

@@ -7,6 +7,9 @@ class HomeController < ApplicationController
     @time = Time.new
     @count = Store.count
   end
+  def review_list
+    @review = Review.paginate(:page => params[:page], per_page: 15).order('created_at DESC')
+  end
   def admin_store
     @news = Store.paginate(:page => params[:page], per_page: 10).order('created_at DESC')
   end

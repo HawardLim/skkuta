@@ -4628,11 +4628,11 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   background-color: transparent;
 }
 .navbar-inverse .navbar-toggle {
-  border-color: #333;
+  border-color: #fff;
 }
 .navbar-inverse .navbar-toggle:hover,
 .navbar-inverse .navbar-toggle:focus {
-  background-color: #333;
+  background-color: #f2f2f2;
 }
 .navbar-inverse .navbar-toggle .icon-bar {
   background-color: #fff;
@@ -6760,10 +6760,11 @@ button.close {
 }
 .navbar_logo {
   position:relative;
+  padding-top:5px;
   float:center;
-  font-size:30px;
+  font-size:33px;
   color:white;
-  width:250px;
+  width:200px;
   font-weight:600px;
   display:inline-block;
 }

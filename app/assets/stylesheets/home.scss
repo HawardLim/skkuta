@@ -849,6 +849,9 @@ footer {
     color:#faaf3a;
 }
 @media screen and (max-width : 768px) {
+.skkuta-nav {
+    display:none;
+}
 .member_div {
     background-color:#f2f2f2;
     height:170px;
@@ -955,7 +958,7 @@ footer {
 .now_review {
     margin-top:10px;
     width:100%;
-    height:200px;
+    height:230px;
     h3 {
     padding-left:10px;
     width:100%;
@@ -970,7 +973,7 @@ footer {
     }
     .each_now_review {
     width:100%;
-    height:20;
+    height:45px;
     box-sizing:border-box;
     display:inline-block;
     border-top:1px solid #f2f2f2;
@@ -996,7 +999,21 @@ footer {
     }
     }
 }
-
+ .more_review {
+        width:100%;
+        padding-top:7px;
+        height:45px;
+        text-align:center;
+        font-family:'Noto Sans KR';
+        box-sizing:border-box;
+        display:inline-block;
+        border-top:1px solid #f2f2f2;
+        p {
+            font-family:'Noto Sans KR';
+            font-weight:600;
+            color:#faaf3a;
+        }
+    }
 
 .foot {
     position:relative;
@@ -1016,4 +1033,49 @@ footer {
 
 html, body {
     height:100%;
+}
+
+.now_review_list {
+    margin-top:10px;
+    width:100%;
+    height:800px;
+    h3 {
+    padding-left:10px;
+    width:100%;
+    padding-bottom:5px;
+    height:13px;
+    font-weight:600;
+    font-size:14px;
+    box-sizing:border-box;
+    display:inline-block;
+    font-family:'Noto Sans KR';
+    margin:0;
+    }
+    .each_now_review {
+    width:100%;
+    height:45px;
+    box-sizing:border-box;
+    display:inline-block;
+    border-top:1px solid #f2f2f2;
+    padding:3px;
+    .each_r_text {
+    text-align:left;
+    padding-left:5px;
+    padding-top:3px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden; 
+    width:70%;
+    float:left;
+    font-family:'Noto Sans KR';
+    }
+    .each_r_store {
+    text-align:right;
+    padding-right:5px;
+    width:25%;
+    float:right;
+    font-size:12px;
+    font-family:'Noto Sans KR';
+    }
+    }
 }

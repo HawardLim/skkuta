@@ -115,7 +115,7 @@
       </form>
       </div>
       <div class="review_view">
-          <% @store_spec.reviews.each do |r| %>
+          <% @store_spec.reviews.order("created_at desc").each do |r| %>
           <div class="review_each">
           <div class="review_profile">
               <img src="/assets/yoman.jpg">
@@ -138,6 +138,7 @@
           <% end %>
           <div class="replyeach_time" data-date-format="yyyy/mm/dd/hh"><p><%= r.created_at.in_time_zone("Asia/Seoul").strftime("%Y-%m-%d %H:%M")%></p></div>
           </div>
+
       </div>
   </section>    
   </div>

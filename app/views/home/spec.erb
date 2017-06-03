@@ -130,15 +130,15 @@
              <%= image_tag r.r_pic %>
           <% end %>
           </div>
+          
+          <div class="replyeach_time" data-date-format="yyyy/mm/dd/hh"><p><%= r.created_at.in_time_zone("Asia/Seoul").strftime("%Y-%m-%d %H:%M")%></p></div>
+          </div>
           <% if user_signed_in? %>
                 <% if current_user.email == "admin@naver.com"%>
                 <a href="/home/reply_delete/<%=r.id%>">삭제</a>
                 <%end%>
               <%end%>
           <% end %>
-          <div class="replyeach_time" data-date-format="yyyy/mm/dd/hh"><p><%= r.created_at.in_time_zone("Asia/Seoul").strftime("%Y-%m-%d %H:%M")%></p></div>
-          </div>
-
       </div>
   </section>    
   </div>

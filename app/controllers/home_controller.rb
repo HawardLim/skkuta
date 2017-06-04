@@ -49,6 +49,12 @@ class HomeController < ApplicationController
     @one_review.save
     redirect_to '/home/index'
   end
+  def alltagnames
+    gon.tagnames =[]
+    Tag.group(:name).count.each do |tag|
+      gon.tagnames << {name: tag.first, count: tag.second}
+    end
+  end
   def search_all
       #tag search or navbar search
       if params[:tag].nil?
@@ -216,6 +222,9 @@ class HomeController < ApplicationController
     @store_tag = @store_spec.tags
     @store_spec.save
   end
+  def random_select_result
+    @stores = Store.all.sample(1)
+  end
   def list_china
     @stores = Store.where("s_type = '중식'")
   end
@@ -313,5 +322,36 @@ class HomeController < ApplicationController
     @stores = Review.find(params[:id])
     @stores.destroy
     redirect_to "/home/admin_reply"
+  end
+  def recommend
+    if params[:what] == '전체'
+    @stores_what = Store.all
+    else
+    @stores_what = Store.where("s_type = '#{params[:what]}'")
+    end
+    if params[:where] == '전체'
+    @stores_where = @stores_what
+    else
+    @stores_where = @stores_what.where("s_site = '#{params[:where]}'")
+    end
+    if params[:how] == '전체'
+    @stores = @stores_where.sample(1)
+    else
+    @stores = @stores_what.where("theme = '#{params[:how]}'")
+    end
+    
+    if @stores.nil?
+      @stores = @store_where.sample(1)
+    else
+      if @stores_where.nil?
+      @stores = @store_what.sample(1)
+      else
+        if @stores_what.nil?
+          @stores = Store.all.sample(1)
+        else
+          @stores = @stores
+        end
+      end
+    end  
   end
 end

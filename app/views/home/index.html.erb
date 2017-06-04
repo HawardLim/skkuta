@@ -46,14 +46,20 @@
         <form action="/home/search_all" method="GET" style="display: inline;">
               <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
         <div class="form-group" style="margin-left:15px;">
+        <div class="subjects1-search">
         <input style="display:none" type="text" name="fakeusernameremembered"/>
-        <input name="tag" type="text" class="form-control search_input" placeholder="키워드로 검색을 할 수 있어요! ex) 정문. 분위기, 데이트, 쪽문, 짜장면" >
+        <input name="tag" type="text" class="form-control search_input autocomplete_tags" id="subjects1-search-txt" placeholder="키워드로 검색을 할 수 있어요! ex) 정문. 분위기, 데이트, 쪽문, 짜장면" >
+        <div class="results" id="subjects1-search-results"></div>
+        </div>
         <button type="submit" class="btn btn-default btn_search" style="border-radius:0px;display: inline-block; padding:3px 6px 3px 5px"><span class="glyphicon glyphicon-search glyphicon_search_size" aria-hidden="true"></span></button>
         </div>
         </form>
     </div>
     <div class="now_skkuta">
         <h2><%=@time.in_time_zone("Asia/Seoul").strftime("%Y-%m-%d %H:%M")%> 현재, <span class="now_number"><%=@count%></span> 개의 식당이 등록되어있습니다.</h2>
+    </div>
+    <div class="now_skkuta_c" style="cursor:pointer" onclick="window.location='/home/random_select';">
+        <h2><small>NEW! </small>맞춤형<span class="now_number"> 랜덤</span> 검색 </h2>
     </div>
     <div class="now_review">
         <h3>최근 리뷰</h3>
@@ -281,10 +287,26 @@
     <% end %>
     </section>
     </div>
- </div>    
+ </div>
+ <!--<div class="index_post"> -->
+ <!--<div class="post_title">-->
+ <!--    <h3><span class="glyphicon glyphicon-list" style="color:#faaf3a;"aria-hidden="true"></span> 스쿠타 게시판</h3>-->
+ <!--</div>-->
+ <!--<div class="talk_with">-->
+ <!--    <p> 스쿠타에 바란다 (Q&A) </p>-->
+ <!--</div>-->
+ <!--<div class="talk_with_2">-->
+ <!--    <p> 여기서 혼밥했어요 :) </p>-->
+ <!--</div>-->
+ <!--<div class="talk_with">-->
+ <!--    <p> 같이 먹어요 </p>-->
+ <!--</div>-->
+ <!--</div>-->
   <script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
+
   </script>
+ 
 </div>

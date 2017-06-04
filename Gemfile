@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
-
+gem 'gon'
+gem 'jquery-ui-rails'
 gem 'mini_magick'
+gem 'fog', '~> 1.38'
 gem 'fog-aws'
 gem 'carrierwave'
 gem 'devise'

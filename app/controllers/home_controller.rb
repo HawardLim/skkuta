@@ -335,16 +335,16 @@ class HomeController < ApplicationController
     @stores_where = @stores_what.where("s_site = '#{params[:where]}'")
     end
     if params[:how] == '전체'
-    @stores = @stores_where.sample(1)
+    @stores = @stores_where.sample(5)
     else
     @stores = @stores_what.where("theme = '#{params[:how]}'")
     end
     
     if @stores.nil?
-      @stores = @store_where.sample(1)
+      @stores = @store_where.sample(5)
     else
       if @stores_where.nil?
-      @stores = @store_what.sample(1)
+      @stores = @store_what.sample(5)
       else
         if @stores_what.nil?
           @stores = Store.all.sample(1)

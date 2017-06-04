@@ -13,7 +13,12 @@
         <h3>리뷰</h3>
         <% @review.each do |r| %>
         <div class="each_now_review" onclick="window.location='/home/spec/<%=r.store_id%>';">
-            <p class="each_r_text"><%=r.r_text%></p>
+            <p class="each_r_text">
+            <% if r.r_pic.nil?%>
+            <% else%>
+            <span class="glyphicon glyphicon-picture" style="color:#faaf3a;"></span>
+            <% end %>
+             <%=r.r_text%></p>
             <p class="each_r_store"><%=r.store.s_name%></p>
         </div>
         <% end %>

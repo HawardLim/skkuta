@@ -12,6 +12,22 @@
         <form action="/home/recommend" method="POST">
            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
             <div class="choice">
+            <h2>음식 종류</h2>
+            <select class="form-control" name="what" style="margin-left:15px;width:35%; display:inline-block;">
+                 <option>전체</option>
+                 <option>한식</option>
+                 <option>중식</option>
+                 <option>일식</option>
+                 <option>뒷풀이</option>
+                 <option>양식</option>
+                 <option>분식</option>
+                 <option>멕시칸</option>
+                 <option>피자</option>
+                 <option>치킨</option>
+                 <option>인도음식</option>
+            </select>
+            </div>
+            <div class="choice">
             <h2>위치</h2>
             <select class="form-control" name="where" style="margin-left:15px;width:35%; display:inline-block;">
                  <option>전체</option>
@@ -26,19 +42,15 @@
             </select>
             </div>
             <div class="choice">
-            <h2>음식 종류</h2>
-            <select class="form-control" name="what" style="margin-left:15px;width:35%; display:inline-block;">
+            <h2>상황</h2>
+            <select class="form-control" name="how" style="margin-left:15px;width:35%; display:inline-block;">
                  <option>전체</option>
-                 <option>한식</option>
-                 <option>중식</option>
-                 <option>일식</option>
-                 <option>뒷풀이</option>
-                 <option>양식</option>
-                 <option>분식</option>
-                 <option>멕시칸</option>
-                 <option>피자</option>
-                 <option>치킨</option>
-                 <option>인도음식</option>
+                 <option>혼밥</option>
+                 <option>데이트</option>
+                 <option>집밥</option>
+                 <option>가성비</option>
+                 <option>분위기</option>
+                 <option>파티</option>
             </select>
             </div>
             <button class="random_btn btn btn-success" style="margin-top:50px;" type="submit" >

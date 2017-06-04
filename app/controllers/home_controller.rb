@@ -324,33 +324,23 @@ class HomeController < ApplicationController
     redirect_to "/home/admin_reply"
   end
   def recommend
-    if params[:what] == '전체'
-    @stores_what = Store.all
-    else
-    @stores_what = Store.where("s_type = '#{params[:what]}'")
-    end
     if params[:where] == '전체'
-    @stores_where = @stores_what
+    @stores_where = Store.all
     else
-    @stores_where = @stores_what.where("s_site = '#{params[:where]}'")
+    @stores_where = Store.where("s_site = '#{params[:where]}'")
     end
-    if params[:how] == '전체'
-    @stores = @stores_where.sample(5)
+    if params[:what] == '전체'
+    @stores = @stores_where
     else
-    @stores = @stores_what.where("theme = '#{params[:how]}'")
+    @stores = @stores_where.where("s_site = '#{params[:what]}'")
     end
-    
     if @stores.nil?
       @stores = @store_where.sample(5)
     else
       if @stores_where.nil?
-      @stores = @store_what.sample(5)
+      @stores = Store.all.sample(5)
       else
-        if @stores_what.nil?
-          @stores = Store.all.sample(1)
-        else
           @stores = @stores
-        end
       end
     end  
   end

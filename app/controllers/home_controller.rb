@@ -335,7 +335,7 @@ class HomeController < ApplicationController
     @stores = @stores_where.where("s_site = '#{params[:what]}'")
     end
     if @stores.nil?
-      @stores = @store_where.sample(5)
+      @stores = @stores_where.sample(5)
     else
       if @stores_where.nil?
       @stores = Store.all.sample(5)

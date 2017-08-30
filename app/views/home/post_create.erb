@@ -1,0 +1,90 @@
+<div class="container">
+    <form enctype="multipart/form-data" action="/home/post_up" accept-charset="UTF-8" method="post">
+    <div class="post_w_up">
+        <div class="post_w_title"><p><%=@stores.s_name%> 에 대한 포스트 작성</p></div>
+        <div class="post_w_complete"><button type="submit" style="border:none; margin-left:10px;background-color:white;font-size:12px;"><span class="glyphicon glyphicon-ok"></span> 작성완료</button></div>
+    </div>
+    <div class="post_pic_up">
+       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <label for="ex_filename"><span class="glyphicon glyphicon-picture"></span></label>
+        <input type="file" id="ex_filename" class="upload-hidden" name="ex_filename"> 
+        <input class="upload-name" value="파일선택" disabled="disabled" placeholder="파일선택">
+        <input type="hidden" name="u_id" value="<%=current_user.id%>">
+        <input type="hidden" name="s_id" value="<%=@stores.id%>">
+    </div>
+    <textarea class="post_w_area" name="post_text" placeholder="<%=@stores.s_name%>에 대한 리뷰를 작성해주세요" required></textarea>
+    </form>
+</div>
+
+<script>
+    $(document).ready(function(){
+      var fileTarget = $('.post_pic_up .upload-hidden');
+      fileTarget.on('change', function(){  // 값이 변경되면
+        if(window.FileReader){  // modern browser
+          var filename = $(this)[0].files[0].name;
+        } 
+        else {  // old IE
+          var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
+        }
+        
+        // 추출한 파일명 삽입
+        $(this).siblings('.upload-name').val(filename);
+      });
+    }); 
+
+</script>
+<script>
+                           $(function() {
+                                $(".btn_write_one_story_reply").click(function(){
+                                    oneporeply_id = this.value;
+                                    oneporeply_oneid = $("#oneporeply_oneid_"+oneporeply_id).val();
+                                    oneporeply_content = $("#oneporeply_content_"+oneporeply_id).val();
+                                    oneporeply_name = $("#oneporeply_name_"+oneporeply_id).val();
+                                    oneporeply_psa = $("#oneporeply_psa_"+oneporeply_id).val();
+                                    // oneporeply_time = Date($.now())
+                                    var dt = new Date();
+                                    var month = dt.getMonth() + 1;
+                                    var oneporeply_time = dt.getFullYear() + "-" + month +  "-" + dt.getDate() + " " + dt.getHours() + ":" + dt.getMinutes();
+                                    $.ajax({
+                                    method: "POST",
+                                    url: "/onestory/reply_write",
+                                    data: { onestory_content: oneporeply_content,
+                                            onestory_id: oneporeply_id,
+                                            onestory_oneid: oneporeply_oneid,
+                                            onestory_name: oneporeply_name,
+                                            onestory_psa: oneporeply_psa },
+                                    success: function(){
+                                        $("#reply_"+oneporeply_id).append('<div class="replyeach">'+ '<div class="replyeach_psa">' + '<img src="' + oneporeply_psa +'"style="z-index:999;" data-pin-nopin="true">' + '</div>' + '<div class="replyeach_name">' + '<p>' + oneporeply_name + '</p>' + '</div>' + '<div class="replyeach_time">' + '<p>' + oneporeply_time + '</p>' + '</div>' + '<div class="replyeach_content">' + '<p>' + oneporeply_content + '</p>' + '</div>' + '</div>');
+                                        $("#oneporeply_content_"+oneporeply_id).val('');
+                                    },
+                                    error: function(){
+                                        alert("complete error");
+                                    }
+                                    })
+                                });
+                            });
+
+                                    //  $("#reply_"+onestory_id).append('<div class="replyeach">'+ '<div class="replyeach_psa">' + '<img scr="' + oneporeply_psa +'"/>' + '</div>' + '<div class="replyeach_name">' + '<p>' + oneporeply_name + '</p>' + '</div>' + '<div class="replyeach_time">' + '<p>' + oneporeply_time + '</p>' + '</div>' + '<div class="replyeach_content">' + '<p>' + oneporeply_content + '</p>' + '</div>' + '</div>')
+
+// $("#ajaxform_reply_one").submit(function(e)
+// {
+//     var replyData = $(this).serializeArray();
+//     var formURL = $(this).attr("action");
+//       onestory_id = this.value;
+//       content = $("#content_" + onestory_id).val();
+//     $.ajax(
+//     {
+//         url : formURL,
+//         type: "POST",
+//         data : replyData,
+//         success:function()
+//         {
+
+//         },
+//         error:function(request,status,error)
+//         {
+//           //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+//         }
+//     });
+// });
+</script>

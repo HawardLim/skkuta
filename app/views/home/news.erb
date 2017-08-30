@@ -1,0 +1,89 @@
+<div class="container" style="background-color:#f2f2f2;margin-top:-20px;">
+    <div class="account_title">
+        <p>뉴스피드</p>
+    </div>
+    <div style="background-color:white;margin-top:20px;">
+    <form enctype="multipart/form-data" action="/home/post_up" accept-charset="UTF-8" method="post">
+    <div class="post_w_up" style="padding-top:5px;">
+        <div class="post_w_title"><p>새 포스트 작성</p></div>
+        <div class="post_w_complete"><button type="submit" style="border:none; margin-left:10px;background-color:white;font-size:12px;"><span class="glyphicon glyphicon-ok"></span> 작성완료</button></div>
+    </div>
+    <div class="post_pic_up">
+       <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <label for="ex_filename"><span class="glyphicon glyphicon-picture"></span></label>
+        <input type="file" id="ex_filename" class="upload-hidden" name="ex_filename"> 
+        <input class="upload-name" value="파일선택" disabled="disabled" placeholder="파일선택">
+        <input type="hidden" name="u_id" value="<%=current_user.id%>">
+    </div>
+    <textarea class="post_w_area" style="height:200px;" name="post_text" placeholder="회원님의 생각을 작성해주세요" required></textarea>
+    </form>
+    </div>
+    <script>
+    $(document).ready(function(){
+      var fileTarget = $('.post_pic_up .upload-hidden');
+      fileTarget.on('change', function(){  // 값이 변경되면
+        if(window.FileReader){  // modern browser
+          var filename = $(this)[0].files[0].name;
+        } 
+        else {  // old IE
+          var filename = $(this).val().split('/').pop().split('\\').pop();  // 파일명만 추출
+        }
+        
+        // 추출한 파일명 삽입
+        $(this).siblings('.upload-name').val(filename);
+      });
+    }); 
+
+</script>
+    <div class="account_review_all">
+      <div class="infinite-table">
+      <div class="account_review_view">
+        <% @comments.each do |p| %>
+        <%=render :partial => '/home/comment', locals: {p: p}  %>
+        <% end %>
+      </div>
+      <p class="pagination">
+        <%= link_to_next_page(@comments, 'Next Page', :remote => true) %>
+      </p>
+      </div>
+    </div>
+    <div id="spinner"></div>
+</div>
+
+</div>
+<script>
+    jQuery(function() {
+   if ($('.pagination').length) {
+     $(window).scroll(function() {
+       var url;
+       url = $('.pagination a').attr('href');
+       if(url && $(window).scrollTop()>$(document).height()-$(window).height()-50)
+       {
+         $('.pagination').text("Fetching more products...");
+         return $.getScript(url);
+       }
+    });
+    return $(window).scroll();
+    }
+    });
+</script>
+
+ <script>
+
+   function loaded(){
+   var element = document.getElementById('spinner'); // 로딩 요소
+   element.parentNode.removeChild(element); // 요소 제거
+    }
+    // 로딩 이벤트에 등록
+    if(window.addEventListener){
+          window.addEventListener('load', loaded, false);
+        }else{
+          window.attachEvent('onload', loaded);
+    }
+
+</script>
+<style>
+    body {
+    background-color:#f2f2f2;
+    }
+</style>

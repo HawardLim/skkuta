@@ -6,7 +6,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def new
   #   super
   # end
-
+  def create
+    super
+    if resource.save
+  @user = resource
+  @user.name = ["성균이","암관이","다산이","제관이","선관이","영관이","회관이","문관이","금잔디","육백이","학관이"].sample
+  @user.save
+    end
+  end
   # POST /resource
   # def create
   #   super

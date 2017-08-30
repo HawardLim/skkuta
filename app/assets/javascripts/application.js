@@ -12,5 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require jquery.raty
+//= require jquery.infinite-pages
+//= require ratyrate
+//= require bootstrap
+//= require_self

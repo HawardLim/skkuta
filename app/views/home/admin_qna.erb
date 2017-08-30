@@ -1,0 +1,26 @@
+<div class="container">
+     <div class="account_title">
+        <p>문의사항</p>
+    </div>
+ <div class="review_view">
+          <% @qnas.each do |r| %>
+          <div class="review_each">
+          <div class="review_profile">
+              <img src="/assets/OOU_one_img_default.png">
+          </div>
+          <div class="review_p">
+              <p><%=r.content%></p>
+              <p><%=r.user.email%></p>
+          </div>
+          
+          <div class="review_pic">
+          <% if r.pic.nil?%>
+          <% else %>
+             <%= image_tag r.pic %>
+          <% end %>
+          </div>
+          <div class="replyeach_time" data-date-format="yyyy/mm/dd/hh"><p><%= r.created_at.in_time_zone("Asia/Seoul").strftime("%Y-%m-%d %H:%M")%></p></div>
+          </div>
+          <% end %>
+</div>
+</div>

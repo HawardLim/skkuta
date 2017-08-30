@@ -1,12 +1,18 @@
 source 'https://rubygems.org'
+gem 'omniauth-facebook'
 gem 'gon'
 gem 'jquery-ui-rails'
+gem 'jquery-infinite-pages'
+gem 'kaminari'
 gem 'mini_magick'
 gem 'fog', '~> 1.38'
 gem 'fog-aws'
 gem 'carrierwave'
 gem 'devise'
+gem 'ratyrate'
+gem 'acts_as_votable', '~> 0.10.0' #좋아요
 gem 'will_paginate', '~> 3.0.5'
+gem 'jquery-turbolinks'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record

@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-
+  resources :recomments
+  post '/rate' => 'rater#create', :as => 'rate'
   get 'welcome/index'
-
+  
   get ':controller/(:action/(:id))'
   post ':controller/(:action/(:id))'
   
@@ -10,7 +11,7 @@ Rails.application.routes.draw do
   get 'update/:id' => 'home#update'
   post '/update_act/:id' => 'home#update_act' 
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => 'users/registrations' }
   root 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -4,7 +4,7 @@
    <%= image_tag @store_spec.s_pic %>
    <% if user_signed_in? %>
      <% if current_user.email == "admin@naver.com"%>
-       <form enctype="multipart/form-data" action="/home/store_delete" accept-charset="UTF-8" method="post">
+    <form enctype="multipart/form-data" action="/home/store_delete" accept-charset="UTF-8" method="post">
        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <input type="hidden" name="id" value="<%=@store_spec.id%>">
     <button type="submit" class="btn btn-danger" style="margin-top:-150px;">삭제</button>
@@ -21,10 +21,23 @@
     <div class="middle_name_left">
     <h1><%=@store_spec.s_name%></h1>
     </div>
+    
     <div class="middle_name_right">
          <form action="/home/view_count_up/<%=@store_spec.id%>" accept-charset="UTF-8" method="PUT">
-            <a href="tel:<%=@store_spec.s_number%>" onclick="/home/view_count_up/<%=@store_spec.id%>"><button type="button" class="btn btn-success btn_call">전화하기</button></a>
+            <a href="tel:<%=@store_spec.s_number%>" onclick="/home/view_count_up/<%=@store_spec.id%>"><button type="button" class="btn btn-success btn_call" style="float:right;">전화하기</button></a>
          </form>
+         <div class="voting_ajax" id="voting_<%=@store_spec.id %>" style="display:inline-block;">
+         <% if user_signed_in? %>
+                <% if current_user.voted_up_on? @store_spec %>
+                        <button style="font-size:32px;top:7px;"class="glyphicon glyphicon-heart downvoting like_btn" value="<%= @store_spec.id%>">
+                        </button>
+                <% else %>
+                         <button style="font-size:32px;top:7px;" class="glyphicon glyphicon-heart-empty upvoting like_btn" value="<%= @store_spec.id%>">
+                        </button>
+                <% end %>
+        <% else %>
+        <% end %>
+        </div>
     </div>
      <div class="store_tag">
                             <% @store_tag.each do |tag|%>
@@ -35,27 +48,142 @@
          <p><%=@store_spec.s_intro%></p>
      </div>
 </div>
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header header-modal">
+                <p><%=@store_spec.s_name%></p>
+                <button type="button" style="margin-top:-40px;"class="btn_close_modal" data-dismiss="modal">X</button>
+            </div>
+
+            <div class="modal_middle">
+                <div class="text-center">
+                    <p>별점을 누르신 후 페이지를 새로고침하면</p>
+                    <p>평가하신 점수가 적용됩니다^^</p>
+                    <%= rating_for @store_spec, 'speed', disable_after_rate: false, cancel: true %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<script>-->
+<!--     $(function() {-->
+<!--        $(".btn_write_one_story_reply").click(function(){-->
+<!--                oneporeply_id = this.value;-->
+<!--                oneporeply_oneid = $("#oneporeply_oneid_"+oneporeply_id).val();-->
+<!--                oneporeply_content = $("#oneporeply_content_"+oneporeply_id).val();-->
+<!--                oneporeply_name = $("#oneporeply_name_"+oneporeply_id).val();-->
+<!--                oneporeply_psa = $("#oneporeply_psa_"+oneporeply_id).val();-->
+                <!--// oneporeply_time = Date($.now())-->
+<!--                var dt = new Date();-->
+<!--                var month = dt.getMonth() + 1;-->
+<!--                var oneporeply_time = dt.getFullYear() + "-" + month +  "-" + dt.getDate() + " " + dt.getHours() + ":" + dt.getMinutes();-->
+<!--                $.ajax({-->
+<!--                method: "POST",-->
+<!--                url: "/rate",-->
+<!--                data: { onestory_content: oneporeply_content,-->
+<!--                        onestory_id: oneporeply_id,-->
+<!--                        onestory_oneid: oneporeply_oneid,-->
+<!--                        onestory_name: oneporeply_name,-->
+<!--                        onestory_psa: oneporeply_psa },-->
+<!--                success: function(){-->
+<!--                    $("#reply_"+oneporeply_id).append('<div class="replyeach">'+ '<div class="replyeach_psa">' + '<img src="' + oneporeply_psa +'"style="z-index:999;" data-pin-nopin="true">' + '</div>' + '<div class="replyeach_name">' + '<p>' + oneporeply_name + '</p>' + '</div>' + '<div class="replyeach_time">' + '<p>' + oneporeply_time + '</p>' + '</div>' + '<div class="replyeach_content">' + '<p>' + oneporeply_content + '</p>' + '</div>' + '</div>');-->
+<!--                    $("#oneporeply_content_"+oneporeply_id).val('');-->
+<!--                },-->
+<!--                error: function(){-->
+<!--                    alert("complete error");-->
+<!--                }-->
+<!--                })-->
+<!--            });-->
+<!--        });-->
+<!--</script>-->
+<div class="star_box">
+         <div class="avg_point">
+         <% if @store_spec.average("speed").nil?%>
+         <p>0</p>
+         <% else %>
+         <p><%= @store_spec.average("speed").avg %></p>
+         <% end %>
+         <h5>평균별점</h5>
+         </div>
+         <div class="tot_member">
+         <p><%= @store_spec.rates("speed").count %></p>
+         <h5>평가자 수</h5>
+         </div>
+         <div class="go_point">
+         <% if current_user %>
+         <a href="#" data-toggle="modal" data-target="#loginModal">별점 평가</a>
+         <% else%>
+         <a href="/users/sign_in">로그인</a>
+         <% end %>
+         </div>
+         <div class="tot_member">
+         <div class="voting_ajax" id="voting1_<%=@store_spec.id %>" style="display:inline-block">
+         <p><%= @store_spec.get_upvotes.size %></p>
+         </div>
+         <h5>찜한 수</h5>
+         </div>
+         <div class="view_count_point">
+         <p><%= @store_spec.view_count %></p>
+         <h5>조회수</h5>
+         </div>
+</div>
+
+<script>
+    $(document).on("click", '.upvoting', function(e){
+            post_id = this.value;
+            $.ajax({
+              method: "GET",
+              cache: false,
+              url: "/home/upvote/" + post_id
+            })
+          .done(function(){
+            $("#voting_" + post_id).load(location.href + " #voting_" + post_id);
+            $("#voting1_" + post_id).load(location.href + " #voting1_" + post_id);
+          });
+          e.preventDefault();
+    });
+    
+    $(document).on("click", '.downvoting', function(e){
+            post_id = this.value;
+            $.ajax({
+              method: "GET",
+              cache: false,
+              url: "/home/downvote/" + post_id
+            })
+          .done(function(){
+            $("#voting_" + post_id).load(location.href + " #voting_" + post_id);
+            $("#voting1_" + post_id).load(location.href + " #voting1_" + post_id);
+          });
+          e.preventDefault();
+    });
+</script>
+
 <div class="middle_spec">
-    <div class="col-xs-3">
+    <div class="icon_div">
         <div class="circle"><p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></p></div>
         <div class="circle_down"><p><%=@store_spec.s_site%></p></div>
     </div>
-     <div class="col-xs-3">
+    <div class="icon_div">
         <div class="circle"><p><span class="glyphicon glyphicon-time" aria-hidden="true"></p></div>
-         <div class="circle_down"><p><%=@store_spec.s_time%></p></div>
+        <div class="circle_down"><p><%=@store_spec.s_time%></p></div>
     </div>
-     <div class="col-xs-3">
+    <div onclick="window.location='/home/post_create/<%=@store_spec.id%>';" class="icon_div" style="background-color:#faaf3a;">
+        <div class="circle" style="background-color:white;cursor:pointer;"><p><span style="color:#faaf3a;" class="glyphicon glyphicon-pencil" aria-hidden="true"></p></div>
+        <div class="circle_down"><p style="text-align:center;color:white;font-weight:600;">포스트 작성</p></div>
+    </div>
+     <div class="icon_div">
         <div class="circle"><p><span class="glyphicon glyphicon-credit-card" aria-hidden="true"></p></div>
          <div class="circle_down"><p><%=@store_spec.s_card%></p></div>
     </div>
-     <div class="col-xs-3">
+    <div class="icon_div">
         <div class="circle"><p><span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></p></div>
          <div class="circle_down"><p><%=@store_spec.s_min%></p></div>
     </div>
 </div>
 <ul class="nav nav-tabs menu_nav" role="tablist">
     <li role="presentation" class="active account_menubar" style="height:50px;"><a href="#menu" aria-controls="menu" role="tab" data-toggle="tab" class="activeTab account_menu" style="font-family:'Noto Sans KR';height:50px;"><span class="glyphicon glyphicon-th" aria-hidden="true"></span>메뉴</a></li>
-    <li role="presentation" class="account_menubar" style="height:50px;"><a href="#review" aria-controls="review" role="tab" data-toggle="tab" class="account_menu" style="font-family:'Noto Sans KR';height:50px;"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>리뷰</a></li>
+    <li role="presentation" class="account_menubar" style="height:50px;"><a href="#review" aria-controls="review" role="tab" data-toggle="tab" class="account_menu" style="font-family:'Noto Sans KR';height:50px;"><span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>익명 리뷰</a></li>
     <li role="presentation" class="account_menubar" style="height:50px;"><a href="#location" aria-controls="location" role="tab" data-toggle="tab" class="account_menu" style="font-family:'Noto Sans KR';height:50px;"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>위치</a></li>
 </ul>
 
@@ -118,7 +246,7 @@
           <% @store_spec.reviews.order("created_at desc").each do |r| %>
           <div class="review_each">
           <div class="review_profile">
-              <img src="/assets/yoman.jpg">
+              <img src="/assets/OOU_one_img_default.png">
           </div>
           <div class="review_p">
               <p><%=r.r_text%></p>

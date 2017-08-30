@@ -1,0 +1,7 @@
+// Append new data
+$("<%=j render(:partial => '/home/comment', :object => @comments) %>")
+  .appendTo($(".infinite-table .account_review_view"));
+
+// Update pagination link
+  $('.pagination')
+    .html("<%=j link_to_next_page(@comments, 'Next Page', :remote => true) %>");

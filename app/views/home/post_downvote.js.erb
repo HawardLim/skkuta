@@ -1,0 +1,3 @@
+$("#voting_<%=p.id%>").bind('ajax:success', function() {
+$(".voting_count").html('<%=escape_javascript p.get_upvotes.size %>');
+});

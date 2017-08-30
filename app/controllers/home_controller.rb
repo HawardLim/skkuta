@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def review
     @every_review = Review.all
   end
@@ -29,7 +30,15 @@ class HomeController < ApplicationController
   end
   def store_delete
     @stores = Store.find(params[:id])
+    if user_signed_in? 
+      if  current_user.email == "admin@naver.com"
+    @reviews = @stores.reviews
+    @reviews.each do |r|
+    r.destroy
+    end
     @stores.destroy
+      end
+    end
     redirect_to "/home/index"
   end
   def update
@@ -318,11 +327,28 @@ class HomeController < ApplicationController
     @reviews.save
     redirect_to "/home/spec/#{@stores.id}"
   end
+  def recomment_destroy 
+   @recomment = Recomment.find(params[:id])
+   if user_signed_in?
+     if @recomment.user.id == current_user.id ||  current_user.email == "admin@naver.com"
+   @comment = @recomment.comment
+     end
+   end
+   @recomment.destroy
+   redirect_to "/home/post_view/#{@comment.id}"
+  end
   def reply_delete
     @stores = Review.find(params[:id])
+    if user_signed_in?
+      if current_user.email == "admin@naver.com"
     @stores.destroy
+      end
+    end
     redirect_to "/home/admin_reply"
   end
+  # def account
+  #   @user = User.find(params[:id])
+  # end 
   def recommend
     if params[:what] == '전체'
     @stores_what = Store.all
@@ -353,5 +379,154 @@ class HomeController < ApplicationController
         end
       end
     end  
+  end
+  def upvote
+    @stores = Store.find(params[:id])
+    @stores.upvote_by current_user, :duplicate => true
+    respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+    end
+  end
+  def downvote
+    @stores = Store.find(params[:id])
+    @stores.downvote_by current_user, :duplicate => true
+    respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+    end
+  end
+  def like_my
+    @stores = current_user.get_up_voted Store
+  end
+  def name_edit
+     @nickname=User.find(params[:id])
+     @nickname.name = params[:u_name]
+     @nickname.save
+     redirect_to "/home/account/#{@nickname.id}"
+  end
+  def profile_pic_up
+     @users = User.find(params[:id])
+     if params[:picpic].nil?
+     else
+     file = params[:picpic]
+     uploader = StorepicUploader.new
+     uploader.store!(file)
+     @users.image = uploader.middle.url
+     end
+     @users.save
+     redirect_to "/home/account/#{@users.id}"
+  end
+  def post_create
+    @stores = Store.find(params[:id])
+  end
+  def comment_update_com
+    @comments = Comment.find(params[:comment_id])
+    @comments.content = params[:post_text]
+    @comments.save
+    redirect_to "/home/account/#{@comments.user.id}"
+  end
+  def post_up 
+    @posts = Comment.new
+    @users = User.find(params[:u_id])
+    @posts.user_id = current_user.id
+    @posts.store_id = params[:s_id]
+    if params[:ex_filename].nil?
+    else
+    file = params[:ex_filename]
+    uploader = StorepicUploader.new
+    uploader.store!(file)
+    @posts.picture = uploader.middle.url
+    end
+    @posts.content = params[:post_text]
+    @posts.save
+    redirect_to "/home/account/#{@users.id}"
+  end
+  def account
+    if user_signed_in?
+    @comments = current_user.comments.page(params[:page]).order('created_at DESC')
+    else
+    redirect_to "/home/index"
+    end
+  end
+  def userpage
+    @user = User.find(params[:id])
+    @comment = @user.comments
+    @comments = @comment.page(params[:page]).order('created_at DESC')
+  end
+  def news
+    @comments = Comment.page(params[:page])
+  end
+  def reply_up
+    @reply = Recomment.new
+    @reply.name = params[:onestory_name]
+    @reply.user_id = params[:onestory_user_id]
+    @reply.comment_id = params[:onestory_id]
+    @reply.content  = params[:onestory_content]
+    @reply.save
+  end
+  def post_view
+    @posts = Comment.find(params[:id])
+  end
+  def comment
+    @comments = Comment.find(params[:id])
+  end
+  def comment_delete 
+    @comment = Comment.find(params[:id])
+    if user_signed_in?
+      if @comment.user.id == current_user.id || current_user.email == "admin@naver.com"
+        @user = @comment.user
+        @recomment = @comment.recomments
+        @recomment.each do |r|
+        r.destroy
+        end
+        @comment.destroy
+      end
+    end
+    redirect_to "/home/account/#{@user.id}"
+  end
+  def comment_update
+    @comments = Comment.find(params[:id])
+  end
+  def post_upvote
+    @comments = Comment.find(params[:id])
+    @comments.upvote_by current_user, :duplicate => true
+    respond_to do |format|
+        format.html { redirect_to :back }
+        format.js
+    end
+  end
+  def post_downvote
+    @comments = Comment.find(params[:id])
+    @comments.downvote_by current_user, :duplicate => true
+    respond_to do |format|
+        format.html { redirect_to :back }
+        format.js 
+    end
+  end
+  def qna_up 
+    @posts = Qna.new
+    @posts.user_id = current_user.id
+    if params[:ex_filename].nil?
+    else
+    file = params[:ex_filename]
+    uploader = StorepicUploader.new
+    uploader.store!(file)
+    @posts.pic = uploader.middle.url
+    end
+    @posts.content = params[:post_text]
+    @posts.save
+    redirect_to "/home/qna_complete"
+  end
+  def admin_qna
+    @qnas = Qna.paginate(:page => params[:page], per_page: 15).order('created_at DESC')
+  end
+  def admin
+    if user_signed_in?
+      if  current_user.email == "admin@naver.com"
+      else
+          redirect_to "/home/index"
+      end
+    end
   end
 end

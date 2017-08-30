@@ -1,4 +1,7 @@
 class Store < ActiveRecord::Base
+    acts_as_votable
+    ratyrate_rateable "speed"
+    has_many :comments
     has_many :ad
     has_many :menus
     has_many :reviews

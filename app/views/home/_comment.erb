@@ -1,0 +1,75 @@
+         <div class="account_review_each">
+          <div class="account_review_profile">
+              <%=image_tag p.user.image%>
+          </div>
+          <div class="account_review_name">
+              <p><a href="/home/userpage/<%=p.user.id%>"><%=p.user.name%></a>
+               <% if p.store.nil? %>
+               <% else %>
+              <small>>> 
+              <a href="/home/spec/<%=p.store.id%>"><%= p.store.s_name%></a></small>
+              <% end %>
+              </p>
+              <div class="account_replyeach_time" data-date-format="yyyy/mm/dd/hh"><p><%= p.created_at.in_time_zone("Asia/Seoul").strftime("%Y-%m-%d %H:%M")%></p></div>
+          </div>
+          <% if user_signed_in? %>
+              <% if p.user_id == current_user.id || current_user.email == "admin@naver.com" %>
+              <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="/home/comment_update/<%=p.id%>">글 수정</a></li>
+                    <li><a href="/home/comment_delete/<%=p.id%>">글 삭제</a></li>
+                  </ul>
+              </div>
+              <!--<a style="float:right;display:inline-block;margin-top:5px; margin-right:5px;" href="/home/comment_delete/<%=p.id%>">글 삭제</a>-->
+              <% end %>
+          <% end %>
+          <% if p.picture.nil? %>
+          <div class="account_review_pic">
+          </div>
+          <% else %>
+          <div class="account_review_pic">
+              <%=image_tag p.picture%>
+          </div>
+          <% end %>
+          <div class="account_review_p">
+              <p><%=p.content%></p>
+          </div>
+         <!-- <div class="voting_ajax like_div" id="voting_<%=p.id %>">-->
+         <!--   <% if user_signed_in? %>-->
+         <!--       <% if current_user.voted_up_on? p %>-->
+         <!--               <button class="glyphicon glyphicon-heart downvoting like_btn" style="font-size:20px;" value="<%= p.id%>" id="down<%=p.id%>">-->
+         <!--               </button>-->
+         <!--       <% else %>-->
+         <!--                <button class="glyphicon glyphicon-heart-empty upvoting like_btn" value="<%= p.id%>" id="up<%=p.id%>">-->
+         <!--               </button>-->
+         <!--       <% end %>-->
+         <!--   <% else %>-->
+         <!--   <% end %>-->
+         <!--<span class="voting_count"><%= p.get_upvotes.size %></span>-->
+         <!--</div>-->
+        
+          <div class="reply_icon_div"><span class="glyphicon glyphicon-comment reply_icon"></span><p><%=p.recomments.count%></p></div>
+          <button type="button" class="team_qna_answer_btn_btn btn_write_one_story" style="float:right;display:inline-block;position:relative;" onclick="window.location='/home/post_view/<%=p.id%>';">댓글 달기</button>
+          </div>
+          <div id="team_qna_answer<%= p.id%>" class="team_qna_answer_div collapse">
+                    <input type="hidden" id="oneporeply_user_id_<%=p.id%>" name ="user_id" value="<%=current_user.id%>">
+                    <input type="hidden" id="oneporeply_name_<%=p.id%>" value="<%=current_user.name%>" name="user_name">
+                    <input type="text" id="oneporeply_content_<%=p.id%>" class="form-control team_intro_text" rows="5" placeholder="리뷰에 대한 댓글을 작성해주세요" name="content"/>
+                    <button type="submit" value="<%=p.id %>" class="team_qna_answer_btn_btn btn_write_one_story btn_write_one_story_write">작성</button>
+          </div>
+          <div class="reply_data" id="reply_<%=p.id%>">
+          <% if p.recomments.empty?%>
+          <% else %>
+          <% @reply = p.recomments.last %>
+          <div class="team_qna_question">
+            <p class="team_qna_name"><%=@reply.name%></p>
+            <p class="team_qna_time">| <%=@reply.created_at.in_time_zone("Asia/Seoul").strftime("%Y-%m-%d %H:%M")%></p>
+            <a href="/home/recomment_destroy/" style="text-align:right;display:inline-block;float:right;">댓글 삭제</a>
+            <p class="team_qna_each_content"><%=@reply.content%></p>
+          </div>
+          </div>
+         <% end %>

@@ -1,0 +1,37 @@
+<div class="container">
+<div class="login_top">
+<h2>회원가입</h2>
+</div>
+
+<div class="login_box" style="height:380px;">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+  <div class="check_term"> 
+  회원 가입 시 원오브어스의 <a href="/home/term" class="modal_link_contract">서비스 이용약관</a> 및 <br><a href="/home/privacy" class="modal_link_contract">개인정보 처리방침</a> 정책을 읽고 이해하였으며 <br>해당 내용에 동의하신 것이 됩니다.
+  </div>
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+</div>
+<%= render "devise/shared/links" %>
+</div>
+

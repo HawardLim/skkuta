@@ -1,0 +1,136 @@
+<div class="container" style="background-color:#f2f2f2;margin-top:-20px;">
+    <div class="account_title">
+        <p><%= @user.name %>님의 페이지</p>
+    </div>
+    <div class="account_top">
+       <div class="account_image">
+           <%=image_tag current_user.image %>
+       </div>
+       <div class="account_name">
+           <p><%=current_user.name%></p>
+           <p><small><%=current_user.email%></small></p>
+       </div>
+    </div>
+    <div class="account_title">
+        <p><%= @user.name %>님의 포스트</p>
+    </div>
+    <div class="account_review_all">
+        <div class="infinite-table">
+          <div class="account_review_view">
+          <% if @comments.empty? %>
+          <p class="no_post">아직 작성한 포스트가 없습니다.</p>
+          <% end %>
+          <% @comments.each do |p| %>
+            <%=render :partial => '/home/comment', locals: {p: p} %>
+          <% end %>
+          </div>
+          <p class="pagination">
+            <%= link_to_next_page(@comments, 'Next Page', :remote => true) %>
+          </p>
+        </div>
+     <div id="spinner"></div>
+    </div>
+</div>
+<style>
+    body {
+    background-color:#f2f2f2;
+    }
+</style>
+<script type="text/javascript">
+$(function () {
+$('#btn-upload').click(function (e) {
+e.preventDefault();
+$('#file').click();
+});
+});
+    
+            function changeValue(obj){
+    	        alert(obj.value);
+            }
+</script>
+<script>
+$(function() {
+    $(".btn_write_one_story_write").click(function(){
+        oneporeply_id = this.value;
+        oneporeply_user_id = $("#oneporeply_user_id_"+oneporeply_id).val();
+        oneporeply_content = $("#oneporeply_content_"+oneporeply_id).val();
+        oneporeply_name = $("#oneporeply_name_"+oneporeply_id).val();
+        // oneporeply_time = Date($.now())
+        var dt = new Date();
+        var month = dt.getMonth() + 1;
+        var oneporeply_time = dt.getFullYear() + "-" + month +  "-" + dt.getDate() + " " + dt.getHours() + ":" + dt.getMinutes();
+        $.ajax({
+        method: "POST",
+        url: "/home/reply_up",
+        data: { onestory_content: oneporeply_content,
+                onestory_id: oneporeply_id,
+                onestory_user_id: oneporeply_user_id,
+                onestory_name: oneporeply_name},
+        success: function(){
+            $("#reply_"+oneporeply_id).append('<div class="team_qna_question">' + '<p class="team_qna_name">' + oneporeply_name + '</p>' + '<p class="team_qna_time">' + oneporeply_time + '</p>' +  '<a href="/teamqna/answer_destroy/' + oneporeply_id + '" style="text-align:right;display:inline-block;float:right;">' + '댓글 삭제' + '</a>' + '<p class="team_qna_each_content">' + oneporeply_content + '</p>' + '</div>');
+            $("#oneporeply_content_"+oneporeply_id).val('');
+        },
+        // error: function(){
+        //     alert("complete error");
+        // }
+        error:function(request,status,error){
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+        })
+    });
+});
+
+//  $("#reply_"+onestory_id).append('<div class="replyeach">'+ '<div class="replyeach_psa">' + '<img scr="' + oneporeply_psa +'"/>' + '</div>' + '<div class="replyeach_name">' + '<p>' + oneporeply_name + '</p>' + '</div>' + '<div class="replyeach_time">' + '<p>' + oneporeply_time + '</p>' + '</div>' + '<div class="replyeach_content">' + '<p>' + oneporeply_content + '</p>' + '</div>' + '</div>')
+// $("#ajaxform_reply_one").submit(function(e)
+// {
+//     var replyData = $(this).serializeArray();
+//     var formURL = $(this).attr("action");
+//       onestory_id = this.value;
+//       content = $("#content_" + onestory_id).val();
+//     $.ajax(
+//     {
+//         url : formURL,
+//         type: "POST",
+//         data : replyData,
+//         success:function()
+//         {
+
+//         },
+//         error:function(request,status,error)
+//         {
+//           //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+//         }
+//     });
+// });
+</script>
+<style type="text/css">
+#file { display:none; } 
+</style>
+<script>
+    jQuery(function() {
+   if ($('.pagination').length) {
+     $(window).scroll(function() {
+       var url;
+       url = $('.pagination a').attr('href');
+       if(url && $(window).scrollTop()>$(document).height()-$(window).height()-50)
+       {
+         $('.pagination').text("Fetching more products...");
+         return $.getScript(url);
+       }
+    });
+    return $(window).scroll();
+    }
+    });
+</script>
+<script>
+   function loaded(){
+   var element = document.getElementById('spinner'); // 로딩 요소
+   element.parentNode.removeChild(element); // 요소 제거
+    }
+    // 로딩 이벤트에 등록
+    if(window.addEventListener){
+          window.addEventListener('load', loaded, false);
+        }else{
+          window.attachEvent('onload', loaded);
+    }
+</script>

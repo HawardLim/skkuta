@@ -5,15 +5,16 @@
     <li>
     <div class="col-xs-12 list_all_list">
         <div class="list_each">
-            <div class="list_right"  onclick="window.location='/home/spec/<%=s.id%>';">
-              <%= image_tag s.s_pic %>
-            </div>
             <div class="list_middle"  onclick="window.location='/home/spec/<%=s.id%>';">
-                <h2><%= s.s_name%></br>
-                <small><%=s.s_intro%></small></h2>
+                 <h2><%= s.s_name%></br>
+                 <small><%=s.s_intro%></small></h2>
             </div>
-            <div class="list_left">
-                <a href="tel:<%= s.s_number%>"><img src="/assets/다운로드.png"/></a>
+            <div class="list_middle_middle">
+                 <h3>평균 별점 </h3><span class="glyphicon glyphicon-star" aria-hidden="true" style="color:#faaf3a;"></span><% if s.average("speed").nil?%>
+                 <h2>0</h2>
+                 <% else %>
+                 <h2><%= s.average("speed").avg %></h2>
+                 <% end %>
             </div>
             <div class="list_middle_down" onclick="window.location='/home/spec/<%=s.id%>';">
                 <% if s.s_deliver_ok == 1 %>
@@ -33,6 +34,10 @@
                 <span class="label label-primary">카드는하나로</span>
                 <% end %>
                 <span class="label label-info"><%= s.s_site %></span>
+            </div>
+            <div class="list_middle_down_right">
+                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span> <%=s.view_count%></span>
+                <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="margin-left:10px;"></span><span> <%=s.reviews.count%></span>
             </div>
         </div>
     </div>

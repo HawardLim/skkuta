@@ -1,0 +1,171 @@
+<div class="container" style="background-color:#f2f2f2;margin-top:-20px;">
+<div class="account_title">
+        <p><%=@posts.user.name%>님의 포스트</p>
+</div>
+<div class="account_review_all">
+        <div class="account_review_view">
+        <div class="account_review_each_all"> 
+         <div class="account_review_each">
+          <div class="account_review_profile">
+              <%=image_tag @posts.user.image%>
+          </div>
+          <div class="account_review_name">
+              <p><%=@posts.user.name%>
+              <% if @posts.store.nil? %>
+              <% else %>
+              <small>
+              >> 
+              <%= @posts.store.s_name%></small>
+              <% end %>
+              </p>
+              <div class="account_replyeach_time" data-date-format="yyyy/mm/dd/hh"><p><%= @posts.created_at.in_time_zone("Asia/Seoul").strftime("%Y-%m-%d %H:%M")%></p></div>
+          </div>
+          <% if user_signed_in? %>
+              <% if @posts.user_id == current_user.id || current_user.email == "admin@naver.com" %>
+              <div class="dropdown">
+                  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="/home/comment_update/<%=@posts.id%>">글 수정</a></li>
+                    <li><a href="/home/comment_delete/<%=@posts.id%>">글 삭제</a></li>
+                  </ul>
+              </div>
+              <!--<a style="float:right;display:inline-block;margin-top:5px; margin-right:5px;" href="/home/comment_delete/<%=@posts.id%>">글 삭제</a>-->
+              <% end %>
+          <% end %>
+          <% if @posts.picture.nil? %>
+          <% else %>
+          <div class="account_review_pic">
+              <%=image_tag @posts.picture%>
+          </div>
+          <% end %>
+          <div class="account_review_p">
+              <p><%=@posts.content%></p>
+          </div>
+          <div class="like_div_interval">
+          </div>
+         <!-- <div class="voting_ajax like_div" id="voting_<%=@posts.id %>">-->
+         <!--   <% if user_signed_in? %>-->
+         <!--       <% if current_user.voted_up_on? @posts %>-->
+         <!--               <button class="glyphicon glyphicon-heart downvoting like_btn" value="<%= @posts.id%>">-->
+         <!--               </button>-->
+         <!--       <% else %>-->
+         <!--                <button class="glyphicon glyphicon-heart-empty upvoting like_btn" value="<%= @posts.id%>">-->
+         <!--               </button>-->
+         <!--       <% end %>-->
+         <!--   <% else %>-->
+         <!--   <% end %>-->
+         <!--   <%= @posts.get_upvotes.size.to_s %>-->
+         <!--</div>-->
+        <script>
+            $(document).on("click", '.upvoting', function(e){
+                    post_id = this.value;
+                    $.ajax({
+                      method: "GET",
+                      cache: false,
+                      url: "/home/post_upvote/" + post_id
+                    })
+                  .done(function(){
+                    $("#voting_" + post_id).load(location.href + " #voting_" + post_id);
+                  });
+                  e.preventDefault();
+            });
+            
+            $(document).on("click", '.downvoting', function(e){
+                    post_id = this.value;
+                    $.ajax({
+                      method: "GET",
+                      cache: false,
+                      url: "/home/post_downvote/" + post_id
+                    })
+                  .done(function(){
+                    $("#voting_" + post_id).load(location.href + " #voting_" + post_id);
+                  });
+                  e.preventDefault();
+            });
+        </script>
+          <div class="reply_icon_div"><span class="glyphicon glyphicon-comment reply_icon"></span><p><%=@posts.recomments.count%></p></div>
+          <button type="button" class="team_qna_answer_btn_btn btn_write_one_story" aria-expanded="false" data-toggle="collapse" data-target="#team_qna_answer<%=@posts.id%>" aria-controls="답변 추가 폼 여닫기">댓글 달기</button>
+          </div>
+          <div id="team_qna_answer<%= @posts.id%>" class="team_qna_answer_div collapse">
+                    <input type="hidden" id="oneporeply_user_id_<%=@posts.id%>" name ="user_id" value="<%=current_user.id%>">
+                    <input type="hidden" id="oneporeply_name_<%=@posts.id%>" value="<%=current_user.name%>" name="user_name">
+                    <input type="text" id="oneporeply_content_<%=@posts.id%>" class="form-control team_intro_text" rows="5" placeholder="리뷰에 대한 댓글을 작성해주세요" name="content"/>
+                    <button type="submit" value="<%=@posts.id %>" class="team_qna_answer_btn_btn btn_write_one_story btn_write_one_story_write">작성</button>
+          </div>
+          <div class="reply_data" id="reply_<%=@posts.id%>">
+          <% @posts.recomments.each do |r| %>
+          <div class="team_qna_question">
+            <p class="team_qna_name" onclick="window.location='/home/userpage/<%=r.user.id%>';"><%=r.name%></p>
+            <p class="team_qna_time">| <%=r.created_at.in_time_zone("Asia/Seoul").strftime("%Y-%m-%d %H:%M")%></p>
+          <% if user_signed_in?%>        
+            <% if r.user_id == current_user.id || current_user.email == "admin@naver.com" %>
+            <a href="/home/recomment_destroy/<%=r.id%>" style="text-align:right;display:inline-block;float:right;">댓글 삭제</a>
+            <% end %>
+          <% end %>
+            <p class="team_qna_each_content"><%=r.content%></p>
+          </div>
+          <% end %>
+          </div>
+         </div>
+      </div>
+    </div>
+</div>
+
+<script>
+$(function() {
+    $(".btn_write_one_story_write").click(function(){
+        oneporeply_id = this.value;
+        oneporeply_user_id = $("#oneporeply_user_id_"+oneporeply_id).val();
+        oneporeply_content = $("#oneporeply_content_"+oneporeply_id).val();
+        oneporeply_name = $("#oneporeply_name_"+oneporeply_id).val();
+        // oneporeply_time = Date($.now())
+        var dt = new Date();
+        var month = dt.getMonth() + 1;
+        var oneporeply_time = dt.getFullYear() + "-" + month +  "-" + dt.getDate() + " " + dt.getHours() + ":" + dt.getMinutes();
+        $.ajax({
+        method: "POST",
+        url: "/home/reply_up",
+        data: { onestory_content: oneporeply_content,
+                onestory_id: oneporeply_id,
+                onestory_user_id: oneporeply_user_id,
+                onestory_name: oneporeply_name},
+        success: function(){
+            $("#reply_"+oneporeply_id).append('<div class="team_qna_question">' + '<p class="team_qna_name">' + oneporeply_name + '</p>' + '<p class="team_qna_time">' + oneporeply_time + '</p>' + '<p class="team_qna_each_content">' + oneporeply_content + '</p>' + '</div>');
+            $("#oneporeply_content_"+oneporeply_id).val('');
+        },
+        // error: function(){
+        //     alert("complete error");
+        // }
+        error:function(request,status,error){
+            alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+        })
+    });
+});
+
+//  $("#reply_"+onestory_id).append('<div class="replyeach">'+ '<div class="replyeach_psa">' + '<img scr="' + oneporeply_psa +'"/>' + '</div>' + '<div class="replyeach_name">' + '<p>' + oneporeply_name + '</p>' + '</div>' + '<div class="replyeach_time">' + '<p>' + oneporeply_time + '</p>' + '</div>' + '<div class="replyeach_content">' + '<p>' + oneporeply_content + '</p>' + '</div>' + '</div>')
+// $("#ajaxform_reply_one").submit(function(e)
+// {
+//     var replyData = $(this).serializeArray();
+//     var formURL = $(this).attr("action");
+//       onestory_id = this.value;
+//       content = $("#content_" + onestory_id).val();
+//     $.ajax(
+//     {
+//         url : formURL,
+//         type: "POST",
+//         data : replyData,
+//         success:function()
+//         {
+
+//         },
+//         error:function(request,status,error)
+//         {
+//           //alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+//         }
+//     });
+// });
+</script>

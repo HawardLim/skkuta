@@ -16,4 +16,6 @@
 //= require jquery.infinite-pages
 //= require ratyrate
 //= require bootstrap
+//= require turbolinks
+//= require_tree .
 //= require_self

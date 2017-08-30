@@ -288,13 +288,6 @@
     <% end %>
     <% end %>
     <% if user_signed_in? %>
-    <div class="col-xs-12">
-        <a href="/users/sign_out">
-        <div class="main_list_spec">
-            <h1 style="text-align:center;"><%= link_to "로그아웃", destroy_user_session_path, method: :delete, data: { confirm: "Are you sure?" } %></h1>
-        </div>
-        </a>
-    </div>
     <% else %>
     
     <% end %>

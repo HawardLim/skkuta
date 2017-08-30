@@ -58,9 +58,8 @@
 
             <div class="modal_middle">
                 <div class="text-center">
-                    <p>별점을 누르신 후 페이지를 새로고침하면</p>
-                    <p>평가하신 점수가 적용됩니다^^</p>
                     <%= rating_for @store_spec, 'speed', disable_after_rate: false, cancel: true %>
+                    <button style="float:none;margin-top:80px;"onclick="window.location='/home/spec/<%=@store_spec.id%>'" class="team_qna_answer_btn_btn btn_write_one_story">제출하기</button>
                 </div>
             </div>
         </div>

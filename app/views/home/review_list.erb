@@ -1,4 +1,4 @@
-<div class="container" style="margin-bottom:50px;">
+<div class="container" style="margin-bottom:50px;padding-top:0px;">
     <div class="searchbox">
         <form action="/home/search_all" method="GET" style="display: inline;">
               <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -23,5 +23,5 @@
         </div>
         <% end %>
 </div>
- <div class="pagination_div"><%= will_paginate @review, :previous_label => t("<<"), :next_label => t(">>")%></div>
+<div class="pagination_div"><%= will_paginate @review, :previous_label => t("<<"), :next_label => t(">>")%></div>
 </div>

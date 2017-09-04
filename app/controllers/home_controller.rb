@@ -460,7 +460,7 @@ class HomeController < ApplicationController
     @comments = @comment.page(params[:page]).order('created_at DESC')
   end
   def news
-    @comments = Comment.page(params[:page])
+    @comments = Comment.page(params[:page]).order('created_at DESC')
   end
   def reply_up
     @reply = Recomment.new

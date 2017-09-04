@@ -1,7 +1,9 @@
 <div class="container">
 <ul class="list-group">
   <% @user.each do |u| %>
-  <li class="list-group-item"><%=u.name%> / <%=u.email%></li>
+  <li class="list-group-item"><%=u.name%> / <%=u.email%> /
+  <%= u.created_at.in_time_zone("Asia/Seoul").strftime("%m월%d일 %H시") %>
+  </li>
   <% end %>
 </ul>
 <div class="pagination_div"><%= will_paginate @user, :previous_label => t("<<"), :next_label => t(">>")%></div>

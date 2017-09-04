@@ -1,0 +1,8 @@
+<div class="container">
+<ul class="list-group">
+  <% @user.each do |u| %>
+  <li class="list-group-item"><%=u.name%> / <%=u.email%></li>
+  <% end %>
+</ul>
+<div class="pagination_div"><%= will_paginate @user, :previous_label => t("<<"), :next_label => t(">>")%></div>
+</div>

@@ -534,4 +534,13 @@ class HomeController < ApplicationController
       end
     end
   end
+  def admin_user
+    if user_signed_in?
+      if  current_user.email == "admin@naver.com"
+        @user = User.paginate(:page => params[:page], per_page: 20).order('created_at DESC')
+      else
+          redirect_to "/home/index"
+      end
+    end
+  end
 end

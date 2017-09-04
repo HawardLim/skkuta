@@ -25,7 +25,7 @@
                 <!-- Set the first background image using inline CSS below. -->
                 <div class="fill" style="background-image:url(<%= asset_path 'lunch.jpg' %>)"></div>
                 <div class="carousel-text">
-                    <h1>공사 중 입니다!!</h1>
+                    <h1>SKKUTA ver 2.0 업데이트 완료!</h1>
                     <p>밥먹을 땐 SKKUTA</p>
                 </div>
             </div>
@@ -88,6 +88,21 @@
         </div>
         <% end %>
         <a href="/home/review_list"><div class="more_review" onclick="window.location='/home/review_list';"><p>리뷰 더보기</p></div></a>
+    </div>
+    <div class="now_review">
+        <h3>최근 포스트</h3>
+        <% @comments.each do |c| %>
+        <div class="each_now_review" onclick="window.location='/home/post_view/<%=c.id%>';">
+            <p class="each_r_text">
+            <% if c.picture.nil?%>
+            <% else%>
+            <span class="glyphicon glyphicon-picture" style="color:#faaf3a;"></span>
+            <% end %>
+             <%=c.content%></p>
+            <p class="each_r_store"><%=c.user.name%></p>
+        </div>
+        <% end %>
+        <a href="/home/news"><div class="more_review" onclick="window.location='/home/news';"><p>뉴스피드 보기</p></div></a>
     </div>
    <ul class="nav nav-tabs menu_nav" role="tablist">
     <li role="presentation" class="active account_menubar_i" style="height:50px;"><a href="#menu" aria-controls="menu" role="tab" data-toggle="tab" class="activeTab account_menu" style="font-family:'Noto Sans KR';height:50px;"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> 종류별</a></li>

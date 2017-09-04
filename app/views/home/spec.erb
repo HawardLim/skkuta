@@ -32,10 +32,12 @@
                         <button style="font-size:32px;top:7px;"class="glyphicon glyphicon-heart downvoting like_btn" value="<%= @store_spec.id%>">
                         </button>
                 <% else %>
-                         <button style="font-size:32px;top:7px;" class="glyphicon glyphicon-heart-empty upvoting like_btn" value="<%= @store_spec.id%>">
+                        <button style="font-size:32px;top:7px;" class="glyphicon glyphicon-heart-empty upvoting like_btn" value="<%= @store_spec.id%>">
                         </button>
                 <% end %>
         <% else %>
+                    <button style="font-size:32px;top:7px;" class="glyphicon glyphicon-heart-empty like_btn" onclick="window.location='/users/sign_in';">
+                    </button>
         <% end %>
         </div>
     </div>

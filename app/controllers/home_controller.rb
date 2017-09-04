@@ -5,6 +5,7 @@ class HomeController < ApplicationController
   end
   def index
     @review = Review.order('created_at DESC').take(3)
+    @comments = Comment.order('created_at DESC').take(3)
     @time = Time.new
     @count = Store.count
   end
@@ -418,7 +419,11 @@ class HomeController < ApplicationController
      redirect_to "/home/account/#{@users.id}"
   end
   def post_create
+    if user_signed_in?
     @stores = Store.find(params[:id])
+    else
+    redirect_to "/users/sign_in"
+    end
   end
   def comment_update_com
     @comments = Comment.find(params[:comment_id])

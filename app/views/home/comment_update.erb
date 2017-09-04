@@ -1,7 +1,12 @@
 <div class="container">
     <form enctype="multipart/form-data" action="/home/comment_update_com" accept-charset="UTF-8" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <div class="post_w_up">
-        <div class="post_w_title"><p><%=@comments.store.s_name%> 에 대한 포스트 작성</p></div>
+        <% if @comments.store.nil? %>
+        <div class="post_w_title"><p>포스트 수정</p></div>
+        <% else %>
+        <div class="post_w_title"><p><%=@comments.store.s_name%> 에 대한 포스트 수정</p></div>
+        <% end %>
         <div class="post_w_complete"><button type="submit" style="border:none; margin-left:10px;background-color:white;font-size:12px;"><span class="glyphicon glyphicon-ok"></span> 작성완료</button></div>
         <input type="hidden" name="user_id" value="<%=@comments.user_id%>"/>
         <input type="hidden"  name="comment_id" value="<%=@comments.id%>"/>

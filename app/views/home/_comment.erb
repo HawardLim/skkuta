@@ -55,12 +55,19 @@
           <div class="reply_icon_div"><span class="glyphicon glyphicon-comment reply_icon"></span><p><%=p.recomments.count%></p></div>
           <button type="button" class="team_qna_answer_btn_btn btn_write_one_story" style="float:right;display:inline-block;position:relative;" onclick="window.location='/home/post_view/<%=p.id%>';">댓글 달기</button>
           </div>
+          <% if user_signed_in? %>
           <div id="team_qna_answer<%= p.id%>" class="team_qna_answer_div collapse">
                     <input type="hidden" id="oneporeply_user_id_<%=p.id%>" name ="user_id" value="<%=current_user.id%>">
                     <input type="hidden" id="oneporeply_name_<%=p.id%>" value="<%=current_user.name%>" name="user_name">
                     <input type="text" id="oneporeply_content_<%=p.id%>" class="form-control team_intro_text" rows="5" placeholder="리뷰에 대한 댓글을 작성해주세요" name="content"/>
                     <button type="submit" value="<%=p.id %>" class="team_qna_answer_btn_btn btn_write_one_story btn_write_one_story_write">작성</button>
           </div>
+          <% else %>
+          <div id="team_qna_answer<%= p.id%>" class="team_qna_answer_div collapse">
+                    <input type="text" id="oneporeply_content_<%=p.id%>" class="form-control team_intro_text" rows="5" placeholder="댓글을 쓰시려면 로그인을 해주세요" name="content"/>
+                    <button onclick="window.location='/users/sign_in';" class="team_qna_answer_btn_btn btn_write_one_story btn_write_one_story_write">로그인</button>
+          </div>
+          <% end %>
           <div class="reply_data" id="reply_<%=p.id%>">
           <% if p.recomments.empty?%>
           <% else %>

@@ -2,6 +2,7 @@
     <div class="account_title">
         <p>뉴스피드</p>
     </div>
+    <% if user_signed_in? %>
     <div style="background-color:white;margin-top:20px;">
     <form enctype="multipart/form-data" action="/home/post_up" accept-charset="UTF-8" method="post">
     <div class="post_w_up" style="padding-top:5px;">
@@ -18,6 +19,7 @@
     <textarea class="post_w_area" style="height:200px;" name="post_text" placeholder="회원님의 생각을 작성해주세요" required></textarea>
     </form>
     </div>
+    <% end %>
     <script>
     $(document).ready(function(){
       var fileTarget = $('.post_pic_up .upload-hidden');

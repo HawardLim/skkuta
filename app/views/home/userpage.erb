@@ -4,11 +4,11 @@
     </div>
     <div class="account_top">
        <div class="account_image">
-           <%=image_tag current_user.image %>
+           <%=image_tag @user.image %>
        </div>
        <div class="account_name">
-           <p><%=current_user.name%></p>
-           <p><small><%=current_user.email%></small></p>
+           <p><%=@user.name%></p>
+           <p><small><%=@user.email%></small></p>
        </div>
     </div>
     <div class="account_title">

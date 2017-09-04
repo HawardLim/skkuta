@@ -89,12 +89,19 @@
           <div class="reply_icon_div"><span class="glyphicon glyphicon-comment reply_icon"></span><p><%=@posts.recomments.count%></p></div>
           <button type="button" class="team_qna_answer_btn_btn btn_write_one_story" aria-expanded="false" data-toggle="collapse" data-target="#team_qna_answer<%=@posts.id%>" aria-controls="답변 추가 폼 여닫기">댓글 달기</button>
           </div>
+          <% if user_signed_in? %>
           <div id="team_qna_answer<%= @posts.id%>" class="team_qna_answer_div collapse">
                     <input type="hidden" id="oneporeply_user_id_<%=@posts.id%>" name ="user_id" value="<%=current_user.id%>">
                     <input type="hidden" id="oneporeply_name_<%=@posts.id%>" value="<%=current_user.name%>" name="user_name">
                     <input type="text" id="oneporeply_content_<%=@posts.id%>" class="form-control team_intro_text" rows="5" placeholder="리뷰에 대한 댓글을 작성해주세요" name="content"/>
                     <button type="submit" value="<%=@posts.id %>" class="team_qna_answer_btn_btn btn_write_one_story btn_write_one_story_write">작성</button>
           </div>
+          <% else %>
+          <div id="team_qna_answer<%= @posts.id%>" class="team_qna_answer_div collapse">
+                    <input type="text" id="oneporeply_content_<%=@posts.id%>" class="form-control team_intro_text" rows="5" placeholder="댓글을 쓰시려면 로그인을 해주세요" name="content"/>
+                    <button onclick="window.location='/users/sign_in';" class="team_qna_answer_btn_btn btn_write_one_story btn_write_one_story_write">로그인</button>
+          </div>
+          <% end %>
           <div class="reply_data" id="reply_<%=@posts.id%>">
           <% @posts.recomments.each do |r| %>
           <div class="team_qna_question">

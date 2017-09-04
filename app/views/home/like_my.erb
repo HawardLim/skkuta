@@ -13,7 +13,11 @@
                  <small><%=s.s_intro%></small></h2>
             </div>
             <div class="list_middle_middle">
-                 <h3>예상 별점 </h3><span class="glyphicon glyphicon-star" aria-hidden="true" style="color:#faaf3a;"></span><h2> 4.5</h2>
+                 <h3>평균 별점 </h3><span class="glyphicon glyphicon-star" aria-hidden="true" style="color:#faaf3a;"></span><% if s.average("speed").nil?%>
+                 <h2>0</h2>
+                 <% else %>
+                 <h2><%= s.average("speed").avg %></h2>
+                 <% end %>
             </div>
             <div class="list_middle_down" onclick="window.location='/home/spec/<%=s.id%>';">
                 <% if s.s_deliver_ok == 1 %>
@@ -34,7 +38,7 @@
                 <% end %>
                 <span class="label label-info"><%= s.s_site %></span>
             </div>
-            <div class="list_middle_down_right">
+            <div class="list_middle_down_right"  onclick="window.location='/home/spec/<%=s.id%>';">
                 <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span><span> <%=s.view_count%></span>
                 <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="margin-left:10px;"></span><span> <%=s.reviews.count%></span>
             </div>

@@ -60,7 +60,7 @@
 
             <div class="modal_middle">
                 <div class="text-center">
-                    <%= rating_for @store_spec, 'speed', disable_after_rate: false, cancel: true %>
+                    <%= rating_for_user @store_spec, current_user, 'speed', disable_after_rate: false, cancel: true %>
                     <button style="float:none;margin-top:80px;"onclick="window.location='/home/spec/<%=@store_spec.id%>'" class="team_qna_answer_btn_btn btn_write_one_story">제출하기</button>
                 </div>
             </div>

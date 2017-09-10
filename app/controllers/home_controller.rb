@@ -524,7 +524,13 @@ class HomeController < ApplicationController
     redirect_to "/home/qna_complete"
   end
   def admin_qna
-    @qnas = Qna.paginate(:page => params[:page], per_page: 15).order('created_at DESC')
+    if user_signed_in?
+      if  current_user.email == "admin@naver.com"
+        @qnas = Qna.paginate(:page => params[:page], per_page: 15).order('created_at DESC')
+      else
+          redirect_to "/home/index"
+      end
+    end
   end
   def admin
     if user_signed_in?

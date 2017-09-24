@@ -60,8 +60,12 @@
 
             <div class="modal_middle">
                 <div class="text-center">
+                    <% if user_signed_in? %>
                     <%= rating_for_user @store_spec, current_user, 'speed', disable_after_rate: false, cancel: true %>
-                    <button style="float:none;margin-top:80px;"onclick="window.location='/home/spec/<%=@store_spec.id%>'" class="team_qna_answer_btn_btn btn_write_one_story">제출하기</button>
+                    <button style="float:none;margin-top:80px;" onclick="window.location='/home/spec/<%=@store_spec.id%>'" class="team_qna_answer_btn_btn btn_write_one_story">제출하기</button>
+                    <% else %>
+                    <button style="float:none;margin-top:80px;" onclick="window.location='/user/sign_in'" class="team_qna_answer_btn_btn btn_write_one_story">로그인</button>
+                    <% end %>
                 </div>
             </div>
         </div>
@@ -112,7 +116,7 @@
          <h5>평가자 수</h5>
          </div>
          <div class="go_point">
-         <% if current_user %>
+         <% if user_signed_in? %>
          <a href="#" data-toggle="modal" data-target="#loginModal">별점 평가</a>
          <% else%>
          <a href="/users/sign_in">로그인</a>
